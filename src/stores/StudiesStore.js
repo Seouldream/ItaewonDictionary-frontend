@@ -17,7 +17,7 @@ export default class StudiesStore extends Store {
     const { studies, pageNumber } = await studyApiService.fetchStudies();
 
     this.studies = studies;
-    this.pageNumbers = [...Array(pageNumber)].map((numberm, index) => index + 1);
+    this.pageNumbers = [...Array(pageNumber)].map((number, index) => index + 1);
 
     this.publish();
   }

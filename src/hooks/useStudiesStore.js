@@ -9,7 +9,7 @@ export default function useStudiesStore() {
     studiesStore.subscribe(forceUpdate);
 
     return () => studiesStore.unsubscribe(forceUpdate);
-  }, forceUpdate);
+  }, [forceUpdate]);
 
   return studiesStore;
 }

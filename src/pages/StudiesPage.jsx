@@ -12,11 +12,11 @@ export default function StudiesPage() {
 
   const navigate = useNavigate();
 
-  const { studies, pageNumber } = studiesStore;
+  const { studies, pageNumbers } = studiesStore;
 
   const handleClickPageChangeButton = (number) => {
     studiesStore.changePageNumber(number);
-    navigate(`/studies?page${number}`);
+    navigate(`/studies?page=${number}`);
   };
 
   return (
@@ -25,7 +25,7 @@ export default function StudiesPage() {
       <button type="button">작성하기</button>
       <Studies
         studies={studies}
-        pageNumber={pageNumber}
+        pageNumbers={pageNumbers}
         onClick={handleClickPageChangeButton}
       />
     </>

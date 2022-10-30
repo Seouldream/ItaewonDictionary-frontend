@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 
-export default function Studies({
-  studies, pageNumbers, onClick,
+export default function Talks({
+  talks, pageNumbers, onClick,
 }) {
+  console.log('talks', talks);
   const handleClickPageChangeButton = (pageNumber) => {
     onClick(pageNumber);
   };
@@ -10,22 +11,22 @@ export default function Studies({
     <>
       <nav>
         <ul>
-          {studies.map((study) => (
+          {talks.map((talk) => (
             <Link
-              to={`/studies/${study.id}`}
-              key={study.id}
+              to={`/talks/${talk.id}`}
+              key={talk.id}
             >
-              <li key={study.id} />
+              <li key={talk.id} />
               작성자 이름:
               {' '}
-              {study.writer}
+              {talk.writer}
               제목:
-              {study.title}
+              {talk.title}
               내용:
-              {study.content}
+              {talk.content}
               해쉬태그:
               #
-              {study.hashTag}
+              {talk.hashTag}
             </Link>
           ))}
         </ul>

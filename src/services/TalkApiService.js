@@ -4,19 +4,19 @@ import config from '../config';
 
 const baseUrl = config.apiBaseUrl;
 
-export default class StudyApiService {
-  async fetchStudies() {
-    const url = `${baseUrl}/studies`;
+export default class TalkApiService {
+  async fetchTalks() {
+    const url = `${baseUrl}/talks`;
 
     const { data } = await axios.get(url);
 
-    const { studies, pageNumber } = data;
+    const { talks, pageNumber } = data;
 
-    return { studies, pageNumber };
+    return { talks, pageNumber };
   }
 
   async changePageNumber(number) {
-    const url = `${baseUrl}/studies`;
+    const url = `${baseUrl}/talks`;
 
     const { data } = await axios.get(url, {
       params: {
@@ -24,8 +24,8 @@ export default class StudyApiService {
       },
     });
 
-    return data.studies;
+    return data.talks;
   }
 }
 
-export const studyApiService = new StudyApiService();
+export const talkApiService = new TalkApiService();
