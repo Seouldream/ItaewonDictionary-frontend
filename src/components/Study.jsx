@@ -1,7 +1,40 @@
-export default function Study() {
+export default function Study({ study, onClickStudy }) {
+  const {
+    id, title, writer, createdDate, hashTags,
+    viewsCount, commentsCount, likesCount,
+  } = study;
+
+  const handleClickStudy = () => {
+    onClickStudy({ id });
+  };
+
   return (
-    <div>
-      개별 스터디 게시물 페이지 입니다.
-    </div>
+    <li>
+      <button type="button" onClick={handleClickStudy}>
+        <div>{writer}</div>
+        <div>{createdDate}</div>
+        <h3>{title}</h3>
+        <ul>
+          {hashTags.map((hashTag) => (
+            <li key={`${id}-${hashTag}`}>{hashTag}</li>
+          ))}
+        </ul>
+        <div>
+          views:
+          {' '}
+          {viewsCount}
+        </div>
+        <div>
+          comments:
+          {' '}
+          {commentsCount}
+        </div>
+        <div>
+          likes:
+          {' '}
+          {likesCount}
+        </div>
+      </button>
+    </li>
   );
 }

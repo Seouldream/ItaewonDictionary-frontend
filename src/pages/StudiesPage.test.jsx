@@ -1,52 +1,32 @@
 import { render, screen } from '@testing-library/react';
+
 import StudiesPage from './StudiesPage';
 
-const context = describe;
+const navigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  Link({ children, to }) {
-    return (
-      <a href={to}>
-        {children}
-      </a>
-    );
+  useNavigate() {
+    return navigate;
   },
-  useNavigate: () => ({
-    navigate: jest.fn(),
-  }),
-}));
-
-let studies;
-let pageNumbers;
-
-jest.mock('../hooks/useStudiesStore', () => () => ({
-  studies,
-  pageNumbers,
-  fetchStudies: jest.fn(),
-  changePageNumber: jest.fn(),
 }));
 
 describe('StudiesPage', () => {
-  context('studies', () => {
-    beforeEach(() => {
-      studies = [
-        {
-          id: 1, writer: 'Kim', title: 'No one Here?', content: 'anyBody here?', hashTag: 'java,react',
-        },
-        {
-          id: 2, writer: 'Lee', title: 'Second visitor', content: 'I stayed here more than 10days but I Couldnt see anybody here yet.', hashTag: 'empty,sad',
-        },
-      ];
-      pageNumbers = [1];
-    });
+  it('redners title', () => {
+    render(<StudiesPage />);
 
-    it('스터디 목록 2개 보여줌', () => {
-      render(
-        <StudiesPage />,
-      );
-      screen.getByText(/Kim/);
-      screen.getByText(/#java/);
-      screen.getByText(/Second/);
-    });
+    screen.getByText(/스터디 게시판/);
+  });
+
+  it('renders write button', () => {
+    render(<StudiesPage />);
+
+    screen.getByText(/작성하기/);
+  });
+
+  it('renders study list', () => {
+    render(<StudiesPage />);
+
+    screen.getByText(/로지/);
+    screen.getByText(/사이드 프로젝트하실 프론트 한 분 구합니다/);
   });
 });

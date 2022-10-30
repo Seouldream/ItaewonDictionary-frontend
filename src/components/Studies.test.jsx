@@ -1,48 +1,44 @@
 import { render, screen } from '@testing-library/react';
+
 import Studies from './Studies';
 
-const context = describe;
-
-jest.mock('react-router-dom', () => ({
-  Link({ children, to }) {
-    return (
-      <a href={to}>
-        {children}
-      </a>
-    );
-  },
-  useNavigate: () => ({
-    navigate: jest.fn(),
-  }),
-}));
-
 describe('Studies', () => {
-  const handleClick = jest.fn();
+  const studies = [
+    {
+      id: 1,
+      title: '사이드 프로젝트하실 프론트 한 분 구합니다',
+      writer: '로지',
+      createdDate: '2022. 10, 30',
+      hashTags: ['javascript', 'react'],
+      viewsCount: 0,
+      commentsCount: 0,
+      likesCount: 0,
+    },
+    {
+      id: 2,
+      title: '코딩 스터디 구함',
+      writer: '아샬',
+      createdDate: '2022. 10, 30',
+      hashTags: ['javascript', 'react'],
+      viewsCount: 0,
+      commentsCount: 0,
+      likesCount: 0,
+    },
+  ];
 
-  function renderStudies(studies, pageNumbers) {
+  const handleClickStudy = jest.fn();
+
+  it('renders studies', () => {
     render((
       <Studies
         studies={studies}
-        pageNumbers={pageNumbers}
-        onClick={handleClick}
+        onClickStudy={handleClickStudy}
       />
     ));
-  }
 
-  context('with studies', () => {
-    const studies = [
-      {
-        id: 1, writer: 'Kim', title: 'No one Here?', content: 'anyBody here?', hashTag: 'java,react',
-      },
-      {
-        id: 2, writer: 'Lee', title: 'Second visitor', content: 'I stayed here more than 10days but I Couldnt see anybody here yet.', hashTag: 'empty,sad',
-      },
-    ];
-    const pageNumbers = [];
-
-    it('스터디 모집 게시물들을 보여준다.', () => {
-      renderStudies(studies, pageNumbers);
-      screen.getByText(/Kim/);
-    });
+    screen.getByText(/로지/);
+    screen.getByText(/사이드 프로젝트하실 프론트 한 분 구합니다/);
+    screen.getByText(/아샬/);
+    screen.getByText(/코딩 스터디 구함/);
   });
 });
