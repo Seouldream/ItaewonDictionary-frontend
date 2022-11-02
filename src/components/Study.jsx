@@ -1,7 +1,7 @@
 export default function Study({ study, onClickStudy }) {
   const {
-    id, title, writer, createdDate, hashTags,
-    viewsCount, commentsCount, likesCount,
+    id, title, writer, registrationDate, hashTags,
+    views, comments, likes,
   } = study;
 
   const handleClickStudy = () => {
@@ -12,27 +12,27 @@ export default function Study({ study, onClickStudy }) {
     <li>
       <button type="button" onClick={handleClickStudy}>
         <div>{writer}</div>
-        <div>{createdDate}</div>
+        <div>{registrationDate}</div>
         <h3>{title}</h3>
         <ul>
           {hashTags.map((hashTag) => (
-            <li key={`${id}-${hashTag}`}>{hashTag}</li>
+            <li key={hashTag.id}>{hashTag.tag}</li>
           ))}
         </ul>
         <div>
           views:
           {' '}
-          {viewsCount}
+          {views}
         </div>
         <div>
           comments:
           {' '}
-          {commentsCount}
+          {comments}
         </div>
         <div>
           likes:
           {' '}
-          {likesCount}
+          {likes}
         </div>
       </button>
     </li>

@@ -9,7 +9,6 @@ import TalksPage from './pages/TalksPage';
 import Talk from './components/Talk';
 import TalkPost from './components/TalkPost';
 import StudyDetail from './components/StudyDetail';
-import StudyFormPage from './pages/StudyFormPage';
 
 export default function App() {
   return (
@@ -22,7 +21,6 @@ export default function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/studies" element={<StudiesPage />} />
         <Route path="/studies/:id" element={<StudyDetail />} />
-        <Route path="/studies/post" element={<StudyFormPage />} />
         <Route path="/talks" element={<TalksPage />} />
         <Route path="/talks/:id" element={<Talk />} />
         <Route path="/talks/post" element={<TalkPost />} />

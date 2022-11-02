@@ -1,36 +1,25 @@
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Studies from '../components/Studies';
+import useStudiesStore from '../hooks/useStudiesStore';
 
 const BoardMenu = styled.div`
   display: flex;
 `;
 
-const studies = [
-  {
-    id: 1,
-    title: '사이드 프로젝트하실 프론트 한 분 구합니다',
-    writer: '로지',
-    createdDate: '2022. 10, 30',
-    hashTags: ['javascript', 'react'],
-    viewsCount: 0,
-    commentsCount: 0,
-    likesCount: 0,
-  },
-  {
-    id: 2,
-    title: '코딩 스터디 구함',
-    writer: '아샬',
-    createdDate: '2022. 10, 30',
-    hashTags: ['javascript', 'react'],
-    viewsCount: 0,
-    commentsCount: 0,
-    likesCount: 0,
-  },
-];
-
 export default function StudiesPage() {
   const navigate = useNavigate();
+
+  const studiesStore = useStudiesStore();
+
+  useEffect(() => {
+    studiesStore.fetchStudies();
+  }, []);
+
+  const { studies } = studiesStore;
+
+  console.log(studies);
 
   const handleClickWrite = () => {
     // TODO: 스터디 모집 작성 페이지로 이동
@@ -41,8 +30,9 @@ export default function StudiesPage() {
   };
 
   const handleClickStudy = ({ id }) => {
-    console.log(id);
-    navigate(`/studies/${id}`);
+    console.log('id', id);
+    navigate(`/studies/${id}`, { state: { id } });
+
     // TODO: 선택한 스터디 페이지로 이동
   };
 

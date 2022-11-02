@@ -26,6 +26,15 @@ export default class StudyApiService {
 
     return data.studies;
   }
+
+  async createStudy({
+    title, topic, place, time, participants, hasgTags, body,
+  }) {
+    const url = `${baseUrl}/studies/post`;
+    await axios.post(url, {
+      title, topic, place, time, participants, hasgTags, body,
+    });
+  }
 }
 
 export const studyApiService = new StudyApiService();
