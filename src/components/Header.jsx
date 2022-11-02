@@ -20,9 +20,9 @@ export default function Header() {
           <li>
             <Link to="/studies">스터디</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/talks">잡담소</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>

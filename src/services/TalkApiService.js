@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import axios from 'axios';
-import config from '../config';
+import config from '../util/config';
 
 const baseUrl = config.apiBaseUrl;
 

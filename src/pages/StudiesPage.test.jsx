@@ -4,29 +4,55 @@ import StudiesPage from './StudiesPage';
 
 const navigate = jest.fn();
 
+const context = describe;
+
 jest.mock('react-router-dom', () => ({
   useNavigate() {
     return navigate;
   },
 }));
 
+let studies;
+
+jest.mock('../hooks/useStudiesStore', () => () => ({
+  studies,
+  fetchStudies: jest.fn(),
+}));
+
 describe('StudiesPage', () => {
-  it('redners title', () => {
-    render(<StudiesPage />);
+  context('when studies posted', () => {
+    beforeEach(() => {
+      studies = [
+        {
+          id: 1,
+          writer: '로지',
+          title: '첫 커뮤니티 글!',
+          content: '자바하실 분',
+          likes: 12,
+          registrationDate: '2022-10-06',
+          views: 10,
+          hashTags: [{ id: 1, tag: 'tag' }, { id: 2, tag: 'java' }],
+        },
+      ];
+    });
 
-    screen.getByText(/스터디 게시판/);
-  });
+    it('redners title', () => {
+      render(<StudiesPage />);
 
-  it('renders write button', () => {
-    render(<StudiesPage />);
+      screen.getByText(/스터디 게시판/);
+    });
 
-    screen.getByText(/작성하기/);
-  });
+    it('renders write button', () => {
+      render(<StudiesPage />);
 
-  it('renders study list', () => {
-    render(<StudiesPage />);
+      screen.getByText(/작성하기/);
+    });
 
-    screen.getByText(/로지/);
-    screen.getByText(/사이드 프로젝트하실 프론트 한 분 구합니다/);
+    it('renders study list', () => {
+      render(<StudiesPage />);
+
+      screen.getByText(/로지/);
+      screen.getByText(/첫 커뮤니티 글!/);
+    });
   });
 });

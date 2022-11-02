@@ -16,7 +16,7 @@ describe('Study', () => {
     title: '사이드 프로젝트하실 프론트 한 분 구합니다',
     writer: '로지',
     createdDate: '2022. 10, 30',
-    hashTags: ['javascript', 'react'],
+    hashTags: [{ id: 1, tag: 'tag' }, { id: 2, tag: 'java' }],
     viewsCount: 1,
     commentsCount: 2,
     likesCount: 3,
@@ -34,7 +34,7 @@ describe('Study', () => {
 
     screen.getByText(/로지/);
     screen.getByText(/사이드 프로젝트하실 프론트 한 분 구합니다/);
-    screen.getByText(/react/);
+    screen.getByText(/java/);
   });
 
   it('listens for study click event', () => {
