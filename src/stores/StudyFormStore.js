@@ -9,11 +9,11 @@ export default class StudyFormStore extends Store {
   }
 
   async createStudy({
-    title, topic, place, time, participants, hasgTags, body,
+    title, topic, place, time, participants, hashTags, content,
   }) {
     try {
       await studyApiService.createStudy({
-        title, topic, place, time, participants, hasgTags, body,
+        title, topic, place, time, participants, hashTags, content,
       });
     } catch (e) {
       const { errorMessage } = e.response.data;

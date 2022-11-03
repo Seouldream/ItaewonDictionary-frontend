@@ -19,10 +19,12 @@ export default function StudiesPage() {
 
   const { studies } = studiesStore;
 
+  const { pageNumbers } = studiesStore;
+
   console.log(studies);
 
   const handleClickWrite = () => {
-    // TODO: 스터디 모집 작성 페이지로 이동
+    navigate('/studies/post/new');
   };
 
   const handleChangeSearch = () => {
@@ -34,6 +36,11 @@ export default function StudiesPage() {
     navigate(`/studies/${id}`, { state: { id } });
 
     // TODO: 선택한 스터디 페이지로 이동
+  };
+
+  const handleClickChangePage = (pageNumber) => {
+    studiesStore.changePageNumber(pageNumber);
+    navigate(`/studies?page${pageNumber}`);
   };
 
   return (
@@ -63,11 +70,17 @@ export default function StudiesPage() {
         studies={studies}
         onClickStudy={handleClickStudy}
       />
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </ul>
+      <nav>
+        <ul>
+          {pageNumbers.map((pageNumber) => (
+            <li key={pageNumber}>
+              <button type="button" onClick={() => handleClickChangePage(pageNumber)}>
+                {pageNumber}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 }

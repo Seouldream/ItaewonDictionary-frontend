@@ -1,20 +1,26 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import useStudyFormStore from '../hooks/useStudyFormStore';
 
+
 export default function StudyFormPage() {
+  const navigate = useNavigate();
+
   const studyFormStore = useStudyFormStore();
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (study) => {
     const {
-      title, topic, place, time, participants, hasgTags, body,
+      title, topic, place, time, participants, hashTags, content,
     } = study;
 
     await studyFormStore.createStudy({
-      title, topic, place, time, participants, hasgTags, body,
+      title, topic, place, time, participants, hashTags, content,
     });
+
+    navigate('/studies');
   };
 
   return (
@@ -76,11 +82,11 @@ export default function StudyFormPage() {
         />
       </div>
       <div>
-        <label htmlFor="input-body">내용</label>
+        <label htmlFor="input-content">내용</label>
         <textarea
-          id="input-body"
+          id="input-content"
           rows="8"
-          {...register('body', {
+          {...register('content', {
             required: true,
           })}
         />

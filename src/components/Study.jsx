@@ -16,7 +16,7 @@ export default function Study({ study, onClickStudy }) {
         <h3>{title}</h3>
         <ul>
           {hashTags.map((hashTag) => (
-            <li key={hashTag.id}>{hashTag.tag}</li>
+            <li key={`${id}-${hashTag.tag}`}>{hashTag.tag}</li>
           ))}
         </ul>
         <div>
