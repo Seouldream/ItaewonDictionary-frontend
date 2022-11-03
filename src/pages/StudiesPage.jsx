@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Studies from '../components/Studies';
 import useStudiesStore from '../hooks/useStudiesStore';
@@ -21,8 +21,6 @@ export default function StudiesPage() {
 
   const { pageNumbers } = studiesStore;
 
-  console.log(studies);
-
   const handleClickWrite = () => {
     navigate('/studies/post/new');
   };
@@ -38,9 +36,14 @@ export default function StudiesPage() {
     // TODO: 선택한 스터디 페이지로 이동
   };
 
+  // const location = useLocation();
+
+  // console.log('studiesPagelocation', location);
+  console.log('studiesNew', studies);
+
   const handleClickChangePage = (pageNumber) => {
     studiesStore.changePageNumber(pageNumber);
-    navigate(`/studies?page${pageNumber}`);
+    navigate(`/studies?page=${pageNumber}`, { state: { pageNumber } });
   };
 
   return (

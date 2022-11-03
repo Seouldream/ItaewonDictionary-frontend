@@ -19,6 +19,7 @@ export default function App() {
         <Route path="/juniorCamps" element={<JuniorCampsPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/studies" element={<StudiesPage />} />
+        {/* //<Route path="/studies?page=:pageNumber" element={<StudiesPage />} /> */}
         <Route path="/studies/:id" element={<StudyDetail />} />
         <Route path="/studies/post/new" element={<StudyFormPage />} />
         {/* <Route path="/talks" element={<TalksPage />} />

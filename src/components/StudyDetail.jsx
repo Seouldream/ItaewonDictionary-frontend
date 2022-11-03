@@ -6,7 +6,6 @@ export default function StudyDetail() {
   const studiesStore = useStudiesStore();
 
   useEffect(() => {
-    console.log('useffect');
     studiesStore.fetchStudies();
   }, []);
 
@@ -17,14 +16,10 @@ export default function StudyDetail() {
   const studyId = location.state.id;
 
   const { studies } = studiesStore;
-  // console.log('studies', studies);
-  const study = studies.find((element) => element.id === studyId);
-  // console.log('study', study);
-  if (!study) {
-    return console.log('없음');
-  }
 
-  // console.log(study.id);
+  const study = studies.find((element) => element.id === studyId);
+  console.log('InnerStudy >>>>>>>>>>>>>>', study);
+
   return (
     <div>
       {study
@@ -50,7 +45,7 @@ export default function StudyDetail() {
             <div>{study.content}</div>
             <ul>
               {study.hashTags.map((hashTag) => (
-                <li key={hashTag.id}>
+                <li key={hashTag.tag}>
                   #
                   {hashTag.tag}
                 </li>
