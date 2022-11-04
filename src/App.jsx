@@ -5,9 +5,11 @@ import JuniorCampsPage from './pages/JuniorCampsPage';
 import HomePage from './pages/HomePage';
 import EventsPage from './pages/EventsPage';
 import StudiesPage from './pages/StudiesPage';
-import TalkPost from './components/TalkPost';
 import StudyDetail from './components/StudyDetail';
 import StudyFormPage from './pages/StudyFormPage';
+import FreeTalksPage from './pages/FreeTalksPage';
+import FreeTalkDetail from './components/FreeTalkDetail';
+import FreeTalkFormPage from './pages/FreeTalkFormPage';
 
 export default function App() {
   return (
@@ -19,12 +21,11 @@ export default function App() {
         <Route path="/juniorCamps" element={<JuniorCampsPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/studies" element={<StudiesPage />} />
-        {/* //<Route path="/studies?page=:pageNumber" element={<StudiesPage />} /> */}
         <Route path="/studies/:id" element={<StudyDetail />} />
         <Route path="/studies/post/new" element={<StudyFormPage />} />
-        {/* <Route path="/talks" element={<TalksPage />} />
-        <Route path="/talks/:id" element={<Talk />} /> */}
-        <Route path="/talks/post" element={<TalkPost />} />
+        <Route path="/freeTalks" element={<FreeTalksPage />} />
+        <Route path="/freeTalks/:id" element={<FreeTalkDetail />} />
+        <Route path="/freeTalks/post/new" element={<FreeTalkFormPage />} />
       </Routes>
     </div>
   );

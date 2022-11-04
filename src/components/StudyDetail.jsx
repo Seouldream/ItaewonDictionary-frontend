@@ -5,24 +5,21 @@ import useStudiesStore from '../hooks/useStudiesStore';
 export default function StudyDetail() {
   const studiesStore = useStudiesStore();
 
-  useEffect(() => {
-    studiesStore.fetchStudies();
-  }, []);
-
   const location = useLocation();
 
-  // console.log(location);
+  const { id } = location.state;
 
-  const studyId = location.state.id;
+  useEffect(() => {
+    studiesStore.fetchStudy(id);
+  }, []);
 
-  const { studies } = studiesStore;
+  const { study } = studiesStore;
 
-  const study = studies.find((element) => element.id === studyId);
-  console.log('InnerStudy >>>>>>>>>>>>>>', study);
+  const { hashTags } = study;
 
   return (
     <div>
-      {study
+      {study && hashTags
         ? (
           <>
             <div>
@@ -42,9 +39,29 @@ export default function StudyDetail() {
             </div>
 
             <h1>{study.title}</h1>
+            <div>
+              주졔:
+              {' '}
+              {study.topic}
+            </div>
+            <div>
+              장소:
+              {' '}
+              {study.place}
+            </div>
+            <div>
+              일시:
+              {' '}
+              {study.time}
+            </div>
+            <div>
+              참가인원:
+              {' '}
+              {study.participants}
+            </div>
             <div>{study.content}</div>
             <ul>
-              {study.hashTags.map((hashTag) => (
+              {hashTags.map((hashTag) => (
                 <li key={hashTag.tag}>
                   #
                   {hashTag.tag}
@@ -52,9 +69,14 @@ export default function StudyDetail() {
               ))}
             </ul>
             <div>
-              좋아요수
+              추천수
               {' '}
               {study.likes}
+            </div>
+            <div>
+              조회수
+              {' '}
+              {study.views}
             </div>
           </>
         )

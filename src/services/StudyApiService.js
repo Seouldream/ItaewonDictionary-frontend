@@ -9,7 +9,7 @@ export default class StudyApiService {
     const url = `${baseUrl}/studies`;
 
     const { data } = await axios.get(url);
-    console.log('Data', data);
+
     const { studies, pageNumber } = data;
 
     return { studies, pageNumber };
@@ -25,6 +25,13 @@ export default class StudyApiService {
     });
 
     return data.studies;
+  }
+
+  async fetchStudy(id) {
+    const url = `${baseUrl}/studies/${id}`;
+    const { data } = await axios.get(url);
+
+    return data;
   }
 
   async createStudy({

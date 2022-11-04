@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import useStudyFormStore from '../hooks/useStudyFormStore';
 
-export default function StudyFormPage() {
+export default function FreeTalkFormPage() {
   const navigate = useNavigate();
 
   const studyFormStore = useStudyFormStore();

@@ -8,6 +8,8 @@ export default class StudiesStore extends Store {
     this.pageNumbers = [];
 
     this.studies = [];
+
+    this.study = [];
   }
 
   async fetchStudies() {
@@ -18,6 +20,18 @@ export default class StudiesStore extends Store {
 
     this.studies = studies;
     this.pageNumbers = [...Array(pageNumber)].map((number, index) => index + 1);
+
+    this.publish();
+  }
+
+  async fetchStudy(id) {
+    this.study = [];
+    this.publish();
+
+    const data = await studyApiService.fetchStudy(id);
+    console.log('data>>>>>>>', data);
+
+    this.study = data;
 
     this.publish();
   }

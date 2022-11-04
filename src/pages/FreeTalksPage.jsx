@@ -1,53 +1,50 @@
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Studies from '../components/Studies';
-import useStudiesStore from '../hooks/useStudiesStore';
+import FreeTalks from '../components/FreeTalks';
+import useFreeTalksStore from '../hooks/useFreeTalksStore';
 
 const BoardMenu = styled.div`
   display: flex;
 `;
 
-export default function StudiesPage() {
+export default function FreeTalksPage() {
   const navigate = useNavigate();
 
-  const studiesStore = useStudiesStore();
+  const freeTalksStore = useFreeTalksStore();
 
   useEffect(() => {
-    studiesStore.fetchStudies();
+    freeTalksStore.fetchFreeTalks();
   }, []);
 
-  const { studies } = studiesStore;
+  const { freeTalks } = freeTalksStore;
 
-  const { pageNumbers } = studiesStore;
+  const { pageNumbers } = freeTalksStore;
+
+  console.log('FreeTalk', freeTalks);
 
   const handleClickWrite = () => {
-    navigate('/studies/post/new');
+    navigate('/freeTalks/post/new');
   };
 
   const handleChangeSearch = () => {
     // TODO: 검색 구현
   };
 
-  const handleClickStudy = ({ id }) => {
-    navigate(`/studies/${id}`, { state: { id } });
+  const handleClickFreeTalk = ({ id }) => {
+    navigate(`/freeTalks/${id}`, { state: { id } });
 
     // TODO: 선택한 스터디 페이지로 이동
   };
 
-  // const location = useLocation();
-
-  // console.log('studiesPagelocation', location);
-  console.log('studiesNew', studies);
-
   const handleClickChangePage = (pageNumber) => {
-    studiesStore.changePageNumber(pageNumber);
-    navigate(`/studies?page=${pageNumber}`, { state: { pageNumber } });
+    // studiesStore.changePageNumber(pageNumber);
+    navigate(`/freeTalks?page=${pageNumber}`, { state: { pageNumber } });
   };
 
   return (
     <div>
-      <h2>스터디 게시판</h2>
+      <h2>잡담소 게시판</h2>
       <BoardMenu>
         <button
           type="button"
@@ -68,9 +65,9 @@ export default function StudiesPage() {
           검색하기
         </button>
       </BoardMenu>
-      <Studies
-        studies={studies}
-        onClickStudy={handleClickStudy}
+      <FreeTalks
+        freeTalks={freeTalks}
+        onClickFreeTalk={handleClickFreeTalk}
       />
       <nav>
         <ul>

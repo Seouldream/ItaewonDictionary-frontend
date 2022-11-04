@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { studyFormStore } from '../stores/StudyFormStore';
 import useForceUpdate from './useForceUpdate';
 
-export default function usePostFormStore() {
+export default function useStudyFormStore() {
   const forceUpdate = useForceUpdate();
 
   useEffect(() => {
