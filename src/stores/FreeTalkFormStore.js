@@ -5,22 +5,43 @@ export default class FreeTalkFormStore extends Store {
   constructor() {
     super();
 
+    this.writer = '';
+    this.title = '';
+    this.freeTalkHashTags = '';
+    this.content = '';
+
     this.state = '';
   }
 
+  changeTitle(title) {
+    this.title = title;
+
+    this.publish();
+  }
+
+  changeHashTags(freeTalkHashTags) {
+    this.freeTalkHashTags = freeTalkHashTags;
+
+    this.publish();
+  }
+
+  changeContent(content) {
+    this.content = content;
+
+    this.publish();
+  }
+
   async createFreeTalk({
-    title, hashTags, content,
+    title, freeTalkHashTags, content,
   }) {
-    try {
-      await freeTalkApiService.createFreeTalk({
-        title, hashTags, content,
-      });
-    } catch (e) {
-      const { errorMessage } = e.response.data;
-      if (errorMessage === '입력하지않은 내용이 있어요!.') {
-        this.changeState('blankInput', { errorMessage });
-      }
-    }
+    console.log('content', content);
+
+    await freeTalkApiService.createFreeTalk({
+      title, freeTalkHashTags, content,
+
+    });
+
+    this.publish();
   }
 
   changeState(state, { errorMessage = '' } = {}) {
@@ -29,5 +50,4 @@ export default class FreeTalkFormStore extends Store {
     this.publish();
   }
 }
-
 export const freeTalkFormStore = new FreeTalkFormStore();

@@ -34,15 +34,15 @@ export default function StudyFormPage() {
             required: true,
           })}
         />
-        <div>
-          <label htmlFor="input-topic">주제</label>
-          <input
-            id="input-topic"
-            {...register('topic', {
-              required: true,
-            })}
-          />
-        </div>
+      </div>
+      <div>
+        <label htmlFor="input-topic">주제</label>
+        <input
+          id="input-topic"
+          {...register('topic', {
+            required: true,
+          })}
+        />
       </div>
       <div>
         <label htmlFor="input-place">장소</label>
