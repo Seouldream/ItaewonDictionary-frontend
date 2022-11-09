@@ -50,6 +50,7 @@
     "@ckeditor/ckeditor5-react": "^5.0.2",
     "axios": "^1.1.3",
     "given2": "^2.1.7",
+    "ma": "^0.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.0",

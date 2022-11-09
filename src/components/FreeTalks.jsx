@@ -6,11 +6,13 @@ export default function FreeTalks({
   return (
     <ul>
       {freeTalks.map((freeTalk) => (
-        <FreeTalk
-          key={freeTalk.id}
-          freeTalk={freeTalk}
-          onClickFreeTalk={onClickFreeTalk}
-        />
+        <li key={freeTalk.id}>
+          <FreeTalk
+            key={freeTalk.id}
+            freeTalk={freeTalk}
+            onClickFreeTalk={onClickFreeTalk}
+          />
+        </li>
       ))}
     </ul>
   );

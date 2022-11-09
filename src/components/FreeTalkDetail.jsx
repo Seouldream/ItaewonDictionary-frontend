@@ -19,15 +19,15 @@ export default function FreeTalkDetail() {
 
   const { freeTalk } = freeTalksStore;
 
-  console.log('freeTalsk', freeTalk);
+  console.log('freeTalks', freeTalk);
 
   const convertedContent = convertToHtml(freeTalk.content);
 
-  const { freeTalkHashTags } = freeTalk;
+  const { freeTalkHashTags: hashTags } = freeTalk;
 
   return (
     <div>
-      {freeTalk && freeTalkHashTags
+      {freeTalk && hashTags
         ? (
           <>
             <div>
@@ -46,15 +46,9 @@ export default function FreeTalkDetail() {
               </div>
             </div>
             <h1>{freeTalk.title}</h1>
-            <hr />
-            태그를 그냥 들고 왔을 때<br></br>
-            {freeTalk.content}
-            <hr />
-            태그를 setInnerHTML로 들고 왔을 때
             {convertedContent}
-
             <ul>
-              {freeTalkHashTags.map((hashTag) => (
+              {hashTags.map((hashTag) => (
                 <li key={hashTag.tag}>
                   #
                   {hashTag.tag}

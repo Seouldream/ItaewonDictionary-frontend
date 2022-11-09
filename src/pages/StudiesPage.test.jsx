@@ -13,9 +13,11 @@ jest.mock('react-router-dom', () => ({
 }));
 
 let studies;
+let pageNumbers;
 
 jest.mock('../hooks/useStudiesStore', () => () => ({
   studies,
+  pageNumbers,
   fetchStudies: jest.fn(),
 }));
 
@@ -34,9 +36,11 @@ describe('StudiesPage', () => {
           hashTags: [{ id: 1, tag: 'tag' }, { id: 2, tag: 'java' }],
         },
       ];
+
+      pageNumbers = [1];
     });
 
-    it('redners title', () => {
+    it('renders title', () => {
       render(<StudiesPage />);
 
       screen.getByText(/스터디 게시판/);

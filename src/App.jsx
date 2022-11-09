@@ -10,6 +10,7 @@ import StudyFormPage from './pages/StudyFormPage';
 import FreeTalksPage from './pages/FreeTalksPage';
 import FreeTalkDetail from './components/FreeTalkDetail';
 import FreeTalkFormPage from './pages/FreeTalkFormPage';
+import EventDetail from './components/EventDetail';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/newbieCamps" element={<NewbieCampsPage />} />
         <Route path="/juniorCamps" element={<JuniorCampsPage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/studies" element={<StudiesPage />} />
         <Route path="/studies/:id" element={<StudyDetail />} />
         <Route path="/studies/post/new" element={<StudyFormPage />} />
