@@ -1,22 +1,22 @@
-export default function FreeTalk({ freeTalk, onClickFreeTalk }) {
+export default function Study({ study, onClickStudy }) {
   const {
-    id, title, writer, registrationDate, freeTalkHashTags,
+    id, title, writer, registrationDate, hashTags,
     views, comments, likes,
-  } = freeTalk;
+  } = study;
 
-  const handleClickFreeTalk = () => {
-    onClickFreeTalk({ id });
+  const handleClickStudy = () => {
+    onClickStudy({ id });
   };
 
   return (
     <li>
-      <button type="button" onClick={handleClickFreeTalk}>
+      <button type="button" onClick={handleClickStudy}>
         <div>{writer}</div>
         <div>{registrationDate}</div>
         <h3>{title}</h3>
         <ul>
-          {freeTalkHashTags.map((hashTag) => (
-            <li key={`${id}-${hashTag.tag}`}>{hashTag.tag}</li>
+          {hashTags.map((hashTag) => (
+            <li key={hashTag}>{hashTag}</li>
           ))}
         </ul>
         <div>

@@ -19,5 +19,5 @@ test('Header', () => {
   screen.getByText(/주니어/);
   screen.getByText(/이벤트/);
   screen.getByText(/스터디/);
-  // screen.getByText(/잡담소/);
+  screen.getByText(/잡담소/);
 });

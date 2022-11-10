@@ -1,6 +1,21 @@
-import Events from '../components/Events';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Events from '../components/events/Events';
+import useEventsStore from '../hooks/useEventsStore';
 
 export default function EventsPage() {
+  const navigate = useNavigate();
+
+  const eventsStore = useEventsStore();
+
+  useEffect(() => {
+    eventsStore.fetchEvents();
+  }, []);
+
+  const { events } = eventsStore;
+
+  const { pageNumbers } = eventsStore;
+
   const handleChangeSearch = () => {
 
   };
@@ -18,6 +33,7 @@ export default function EventsPage() {
     // ToDo 검색하기 기능 구현
   };
   const handleClickRegister = () => {
+    navigate('/events/post/new');
     // ToDo 이벤트 등록하기 구현
   };
 
@@ -25,22 +41,10 @@ export default function EventsPage() {
 
   };
 
-  const events = [
-    {
-      id: 1,
-      imgUrl: 'https://cdn.pixabay.com/photo/2022/10/20/12/36/germany-7534750__480.jpg',
-      date: '11월 10일(목)오프라인',
-      title: '2022 서울기록페어',
-      eventHashTags: ['서울기록원', '아카이브', 'archives'],
-    },
-    {
-      id: 2,
-      imgUrl: 'https://cdn.pixabay.com/photo/2022/10/20/12/36/germany-7534750__480.jpg',
-      date: '12월 10일(목)오프라인',
-      title: '2022 메가테라 성수코딩 도장',
-      eventHashTags: ['메가테라 4기', '시드웨일', 'TDD부트캠프'],
-    },
-  ];
+  const handleClickChangePage = (pageNumber) => {
+    eventsStore.changePageNumber(pageNumber);
+    navigate(`/events?page=${pageNumber}`, { state: { pageNumber } });
+  };
 
   return (
     <div>
@@ -95,6 +99,17 @@ export default function EventsPage() {
         events={events}
         onClickEvent={handleClickEvent}
       />
+      <nav>
+        <ul>
+          {pageNumbers.map((pageNumber) => (
+            <li key={pageNumber}>
+              <button type="button" onClick={() => handleClickChangePage(pageNumber)}>
+                {pageNumber}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 }

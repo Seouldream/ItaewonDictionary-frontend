@@ -1,29 +1,27 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import useFreeTalksStore from '../hooks/useFreeTalksStore';
+import useTalksStore from '../../hooks/useTalksStore';
 
-export default function FreeTalkDetail() {
+export default function TalkDetail() {
   function convertToHtml(element) {
     return <div dangerouslySetInnerHTML={{ __html: element }} />;
   }
 
-  const freeTalksStore = useFreeTalksStore();
+  const talksStore = useTalksStore();
 
   const location = useLocation();
 
   const { id } = location.state;
 
   useEffect(() => {
-    freeTalksStore.fetchFreeTalk(id);
+    talksStore.fetchFreeTalk(id);
   }, []);
 
-  const { freeTalk } = freeTalksStore;
-
-  console.log('freeTalks', freeTalk);
+  const { freeTalk } = talksStore;
 
   const convertedContent = convertToHtml(freeTalk.content);
 
-  const { freeTalkHashTags: hashTags } = freeTalk;
+  const { hashTags } = freeTalk;
 
   return (
     <div>
@@ -49,9 +47,9 @@ export default function FreeTalkDetail() {
             {convertedContent}
             <ul>
               {hashTags.map((hashTag) => (
-                <li key={hashTag.tag}>
+                <li key={hashTag}>
                   #
-                  {hashTag.tag}
+                  {hashTag}
                 </li>
               ))}
             </ul>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Studies from '../components/Studies';
+import Studies from '../components/studies/Studies';
 import useStudiesStore from '../hooks/useStudiesStore';
 
 const BoardMenu = styled.div`

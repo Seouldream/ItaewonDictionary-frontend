@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import useStudiesStore from '../hooks/useStudiesStore';
+import useStudiesStore from '../../hooks/useStudiesStore';
 
 export default function StudyDetail() {
   const studiesStore = useStudiesStore();
@@ -16,7 +16,6 @@ export default function StudyDetail() {
   const { study } = studiesStore;
 
   const { hashTags } = study;
-
   return (
     <div>
       {study && hashTags
@@ -62,9 +61,9 @@ export default function StudyDetail() {
             <div>{study.content}</div>
             <ul>
               {hashTags.map((hashTag) => (
-                <li key={hashTag.tag}>
+                <li key={hashTag}>
                   #
-                  {hashTag.tag}
+                  {hashTag}
                 </li>
               ))}
             </ul>

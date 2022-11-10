@@ -8,7 +8,7 @@ const Image = styled.img`
 export default function Event({ event, onClickEvent }) {
   const {
     id, title, date, imgUrl,
-    eventHashTags,
+    hashTags,
   } = event;
 
   const handleClickEvent = () => {
@@ -24,7 +24,7 @@ export default function Event({ event, onClickEvent }) {
       </div>
       <h3>{title}</h3>
       <ul>
-        {eventHashTags.map((hashTag) => (
+        {hashTags.map((hashTag) => (
           <li key={`${id}-${hashTag}`}>
             #
             {hashTag}

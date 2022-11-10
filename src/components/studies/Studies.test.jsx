@@ -26,10 +26,6 @@ describe('Studies', () => {
     },
   ];
 
-  const pageNumbers = [
-    1,
-  ];
-
   const handleClickStudy = jest.fn();
 
   it('renders studies', () => {

@@ -7,25 +7,38 @@ export default class TalksStore extends Store {
 
     this.pageNumbers = [];
 
-    this.talks = [];
+    this.freeTalks = [];
+
+    this.freeTalk = [];
   }
 
-  async fetchTalks() {
-    this.talks = [];
+  async fetchFreeTalks() {
+    this.freeTalks = [];
     this.publish();
 
-    const { talks, pageNumber } = await talkApiService.fetchTalks();
+    const { freeTalks, pageNumber } = await talkApiService.fetchFreeTalks();
 
-    this.talks = talks;
+    this.freeTalks = freeTalks;
     this.pageNumbers = [...Array(pageNumber)].map((number, index) => index + 1);
 
     this.publish();
   }
 
-  async changePageNumber(number) {
-    this.talks = [];
+  async fetchFreeTalk(id) {
+    this.freeTalk = [];
+    this.publish();
 
-    this.talks = await talkApiService.changePageNumber(number);
+    const data = await talkApiService.fetchFreeTalk(id);
+
+    this.freeTalk = data;
+
+    this.publish();
+  }
+
+  async changePageNumber(number) {
+    this.FreeTalks = [];
+
+    this.FreeTalks = await talkApiService.changePageNumber(number);
     this.publish();
   }
 }

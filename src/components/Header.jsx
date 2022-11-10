@@ -21,7 +21,7 @@ export default function Header() {
             <Link to="/studies">스터디</Link>
           </li>
           <li>
-            <Link to="/freeTalks">잡담소</Link>
+            <Link to="/talks">잡담소</Link>
           </li>
         </ul>
       </nav>

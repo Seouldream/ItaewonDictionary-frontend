@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import FreeTalks from '../components/FreeTalks';
-import useFreeTalksStore from '../hooks/useFreeTalksStore';
+import FreeTalks from '../components/talks/Talks';
+import useTalksStore from '../hooks/useTalksStore';
 
 const BoardMenu = styled.div`
   display: flex;
@@ -11,20 +11,18 @@ const BoardMenu = styled.div`
 export default function FreeTalksPage() {
   const navigate = useNavigate();
 
-  const freeTalksStore = useFreeTalksStore();
+  const talksStore = useTalksStore();
 
   useEffect(() => {
-    freeTalksStore.fetchFreeTalks();
+    talksStore.fetchFreeTalks();
   }, []);
 
-  const { freeTalks } = freeTalksStore;
+  const { freeTalks } = talksStore;
 
-  const { pageNumbers } = freeTalksStore;
-
-  console.log('FreeTalk', freeTalks);
+  const { pageNumbers } = talksStore;
 
   const handleClickWrite = () => {
-    navigate('/freeTalks/post/new');
+    navigate('/talks/post/new');
   };
 
   const handleChangeSearch = () => {
@@ -32,14 +30,14 @@ export default function FreeTalksPage() {
   };
 
   const handleClickFreeTalk = ({ id }) => {
-    navigate(`/freeTalks/${id}`, { state: { id } });
+    navigate(`/talks/${id}`, { state: { id } });
 
     // TODO: 선택한 스터디 페이지로 이동
   };
 
   const handleClickChangePage = (pageNumber) => {
     // studiesStore.changePageNumber(pageNumber);
-    navigate(`/freeTalks?page=${pageNumber}`, { state: { pageNumber } });
+    navigate(`/talks?page=${pageNumber}`, { state: { pageNumber } });
   };
 
   return (

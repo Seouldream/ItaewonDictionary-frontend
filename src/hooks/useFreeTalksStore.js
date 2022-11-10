@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { freeTalksStore } from '../stores/FreeTalksStore';
+import { talksStore } from '../stores/TalksStore';
 
 import useForceUpdate from './useForceUpdate';
 
@@ -7,10 +7,10 @@ export default function useFreeTalksStore() {
   const forceUpdate = useForceUpdate();
 
   useEffect(() => {
-    freeTalksStore.subscribe(forceUpdate);
+    talksStore.subscribe(forceUpdate);
 
-    return () => freeTalksStore.unsubscribe(forceUpdate);
+    return () => talksStore.unsubscribe(forceUpdate);
   }, [forceUpdate]);
 
-  return freeTalksStore;
+  return talksStore;
 }

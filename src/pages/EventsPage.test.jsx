@@ -1,5 +1,14 @@
 import { render, screen } from '@testing-library/react';
+
 import EventsPage from './EventsPage';
+
+const navigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  useNavigate() {
+    return navigate;
+  },
+}));
 
 const context = describe;
 

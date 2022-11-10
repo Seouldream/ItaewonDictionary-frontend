@@ -29,7 +29,6 @@ export default class StudiesStore extends Store {
     this.publish();
 
     const data = await studyApiService.fetchStudy(id);
-    console.log('data>>>>>>>', data);
 
     this.study = data;
 

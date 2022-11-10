@@ -4,7 +4,7 @@ import config from '../util/config';
 
 const baseUrl = config.apiBaseUrl;
 
-export default class FreeTalkApiService {
+export default class TalkApiService {
   async fetchFreeTalks() {
     const url = `${baseUrl}/freeTalks`;
 
@@ -35,13 +35,13 @@ export default class FreeTalkApiService {
   }
 
   async createFreeTalk({
-    title, freeTalkHashTags, content,
+    title, hashTags, content,
   }) {
     const url = `${baseUrl}/freeTalks/post`;
     await axios.post(url, {
-      title, freeTalkHashTags, content,
+      title, hashTags, content,
     });
   }
 }
 
-export const freeTalkApiService = new FreeTalkApiService();
+export const talkApiService = new TalkApiService();

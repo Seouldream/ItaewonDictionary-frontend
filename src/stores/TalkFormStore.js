@@ -1,13 +1,13 @@
-import { freeTalkApiService } from '../services/FreeTalkApiService';
+import { talkApiService } from '../services/TalkApiService';
 import Store from './Store';
 
-export default class FreeTalkFormStore extends Store {
+export default class TalkFormStore extends Store {
   constructor() {
     super();
 
     this.writer = '';
     this.title = '';
-    this.freeTalkHashTags = '';
+    this.hashTags = '';
     this.content = '';
 
     this.state = '';
@@ -19,8 +19,8 @@ export default class FreeTalkFormStore extends Store {
     this.publish();
   }
 
-  changeHashTags(freeTalkHashTags) {
-    this.freeTalkHashTags = freeTalkHashTags;
+  changeHashTags(hashTags) {
+    this.hashTags = hashTags;
 
     this.publish();
   }
@@ -31,13 +31,11 @@ export default class FreeTalkFormStore extends Store {
     this.publish();
   }
 
-  async createFreeTalk({
-    title, freeTalkHashTags, content,
+  async createTalk({
+    title, hashTags, content,
   }) {
-    console.log('content', content);
-
-    await freeTalkApiService.createFreeTalk({
-      title, freeTalkHashTags, content,
+    await talkApiService.createFreeTalk({
+      title, hashTags, content,
 
     });
 
@@ -50,4 +48,4 @@ export default class FreeTalkFormStore extends Store {
     this.publish();
   }
 }
-export const freeTalkFormStore = new FreeTalkFormStore();
+export const talkFormStore = new TalkFormStore();

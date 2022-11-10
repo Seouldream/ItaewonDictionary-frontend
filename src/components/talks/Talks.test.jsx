@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import FreeTalks from './FreeTalks';
+import Talks from './Talks';
 
-describe('FreeTalks', () => {
+describe('Talks', () => {
   const freeTalks = [
     {
       id: 1,
@@ -12,7 +12,6 @@ describe('FreeTalks', () => {
       views: 0,
       likes: 0,
       content: '<p>24살 취준생입니다.</p>',
-      freeTalkHashTags: [{ tag: '취뽀' }, { tag: 'java' }],
     },
   ];
 
@@ -24,7 +23,7 @@ describe('FreeTalks', () => {
 
   it('renders FreeTalks', () => {
     render((
-      <FreeTalks
+      <Talks
         freeTalks={freeTalks}
         onClickFreeTalk={onClickFreeTalk}
       />
@@ -32,6 +31,6 @@ describe('FreeTalks', () => {
 
     screen.getByText(/취업고민나눠요/);
     screen.getByText(/로지/);
-    screen.getByText(/취뽀/);
+    screen.getByText(/신입개발자/);
   });
 });

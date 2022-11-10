@@ -7,7 +7,7 @@ describe('Event', () => {
     title: '2022 서울기록페어',
     date: '11월 10일(목)오프라인',
     imgUrl: 'https://cdn.pixabay.com/photo/2022/10/20/12/36/germany-7534750__480.jpg',
-    eventHashTags: ['메가테라 4기', '시드웨일'],
+    hashTags: ['메가테라 4기', '시드웨일'],
   };
 
   const onClickEvent = jest.fn();

@@ -5,12 +5,13 @@ import JuniorCampsPage from './pages/JuniorCampsPage';
 import HomePage from './pages/HomePage';
 import EventsPage from './pages/EventsPage';
 import StudiesPage from './pages/StudiesPage';
-import StudyDetail from './components/StudyDetail';
+import StudyDetail from './components/studies/StudyDetail';
 import StudyFormPage from './pages/StudyFormPage';
-import FreeTalksPage from './pages/FreeTalksPage';
-import FreeTalkDetail from './components/FreeTalkDetail';
-import FreeTalkFormPage from './pages/FreeTalkFormPage';
-import EventDetail from './components/EventDetail';
+import TalksPage from './pages/TalksPage';
+import TalkDetail from './components/talks/TalkDetail';
+import TalkFormPage from './pages/TalkFormPage';
+import EventDetail from './components/events/EventDetail';
+import EventFormPage from './pages/EventFormPage';
 
 export default function App() {
   return (
@@ -22,12 +23,13 @@ export default function App() {
         <Route path="/juniorCamps" element={<JuniorCampsPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events/:id" element={<EventDetail />} />
+        <Route path="/events/post/new" element={<EventFormPage />} />
         <Route path="/studies" element={<StudiesPage />} />
         <Route path="/studies/:id" element={<StudyDetail />} />
         <Route path="/studies/post/new" element={<StudyFormPage />} />
-        <Route path="/freeTalks" element={<FreeTalksPage />} />
-        <Route path="/freeTalks/:id" element={<FreeTalkDetail />} />
-        <Route path="/freeTalks/post/new" element={<FreeTalkFormPage />} />
+        <Route path="/talks" element={<TalksPage />} />
+        <Route path="/talks/:id" element={<TalkDetail />} />
+        <Route path="/talks/post/new" element={<TalkFormPage />} />
       </Routes>
     </div>
   );

@@ -1,22 +1,25 @@
-export default function Study({ study, onClickStudy }) {
+export default function Talk({ freeTalk, onClickFreeTalk }) {
   const {
     id, title, writer, registrationDate, hashTags,
     views, comments, likes,
-  } = study;
+  } = freeTalk;
 
-  const handleClickStudy = () => {
-    onClickStudy({ id });
+  const handleClickFreeTalk = () => {
+    onClickFreeTalk({ id });
   };
 
   return (
     <li>
-      <button type="button" onClick={handleClickStudy}>
+      <button type="button" onClick={handleClickFreeTalk}>
         <div>{writer}</div>
         <div>{registrationDate}</div>
         <h3>{title}</h3>
         <ul>
           {hashTags.map((hashTag) => (
-            <li key={`${id}-${hashTag.tag}`}>{hashTag.tag}</li>
+            <li key={`${id}-${hashTag}`}>
+              #
+              {hashTag}
+            </li>
           ))}
         </ul>
         <div>
