@@ -6,6 +6,15 @@ import config from './config';
 const baseUrl = config.apiBaseUrl;
 
 const server = setupServer(
+
+  rest.get(`${baseUrl}/grammar`, async (req, res, ctx) => res(ctx.json(
+    {
+      id: 1,
+      introduction: '영어를 말하기 위해서 가장 기초적인 문법들만 모아놓았어요!',
+      content: '문장의 형식',
+    },
+  ))),
+
   rest.get(`${baseUrl}/studies`, async (req, res, ctx) => res(ctx.json({
     studies: [
       {

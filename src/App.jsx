@@ -12,6 +12,8 @@ import TalkDetail from './components/talks/TalkDetail';
 import TalkFormPage from './pages/TalkFormPage';
 import EventDetail from './components/events/EventDetail';
 import EventFormPage from './pages/EventFormPage';
+import GrammarPage from './pages/grammar/GrammarPage';
+import GrammarAdminPage from './pages/grammar/GrammarAdminPage';
 
 export default function App() {
   return (
@@ -19,17 +21,8 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/newbieCamps" element={<NewbieCampsPage />} />
-        <Route path="/juniorCamps" element={<JuniorCampsPage />} />
-        <Route path="/events" element={<EventsPage />} />
-        <Route path="/events/:id" element={<EventDetail />} />
-        <Route path="/events/post/new" element={<EventFormPage />} />
-        <Route path="/studies" element={<StudiesPage />} />
-        <Route path="/studies/:id" element={<StudyDetail />} />
-        <Route path="/studies/post/new" element={<StudyFormPage />} />
-        <Route path="/talks" element={<TalksPage />} />
-        <Route path="/talks/:id" element={<TalkDetail />} />
-        <Route path="/talks/post/new" element={<TalkFormPage />} />
+        <Route path="/grammar" element={<GrammarPage />} />
+        <Route path="/grammar/admin" element={<GrammarAdminPage />} />
       </Routes>
     </div>
   );

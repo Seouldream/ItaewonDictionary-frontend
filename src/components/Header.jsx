@@ -6,22 +6,13 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Cocheline</Link>
+            <Link to="/">ItaewonDictionary</Link>
           </li>
           <li>
-            <Link to="/newbieCamps">입문자</Link>
+            <Link to="/grammar">이것만 알면 말할 수 있다 문법!</Link>
           </li>
           <li>
-            <Link to="/juniorCamps">주니어</Link>
-          </li>
-          <li>
-            <Link to="/events">이벤트</Link>
-          </li>
-          <li>
-            <Link to="/studies">스터디</Link>
-          </li>
-          <li>
-            <Link to="/talks">잡담소</Link>
+            <Link to="/grammar/admin">관리자페이지 문법</Link>
           </li>
         </ul>
       </nav>
