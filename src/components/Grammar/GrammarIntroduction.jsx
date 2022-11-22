@@ -1,8 +1,12 @@
 export default function GrammarIntroduction({
-  introduction, onChangeIntroduction,
+  introduction, onChangeIntroduction, onClickEditIntroduction,
 }) {
   const handleChangeIntroduction = (e) => {
     onChangeIntroduction(e);
+  };
+
+  const handleClickEditIntroduction = () => {
+    onClickEditIntroduction();
   };
 
   return (
@@ -19,6 +23,12 @@ export default function GrammarIntroduction({
         value={introduction}
         onChange={handleChangeIntroduction}
       />
+      <button
+        type="button"
+        onClick={handleClickEditIntroduction}
+      >
+        수정완료
+      </button>
     </div>
 
   );

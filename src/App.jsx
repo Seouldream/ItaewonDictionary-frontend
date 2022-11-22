@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { ModalProvider } from 'styled-react-modal'
 import Header from './components/Header';
 import NewbieCampsPage from './pages/NewbieCampsPage';
 import JuniorCampsPage from './pages/JuniorCampsPage';
@@ -19,11 +20,13 @@ export default function App() {
   return (
     <div>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/grammar" element={<GrammarPage />} />
-        <Route path="/grammar/admin" element={<GrammarAdminPage />} />
-      </Routes>
+      <ModalProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/grammar" element={<GrammarPage />} />
+          <Route path="/grammar/admin" element={<GrammarAdminPage />} />
+        </Routes>
+      </ModalProvider>
     </div>
   );
 }
