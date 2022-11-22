@@ -20,7 +20,7 @@ export default function GrammarAdminPage() {
 
   const grammar = {
     id: 1,
-    introduction: '영어를 말하기 위한 가장 기초적인 문법들만 모아놓았어요!',
+    introduction: '영어를 말하기 위해서 가장 기초적인 문법들만 모아놓았어요! 더 이상의 문법은 담지 않았어요. 나머지는 직접 쓰고 활용하면서 조금 더 익혀보도록 해요!',
     content: '1형식',
   };
 
@@ -49,14 +49,19 @@ export default function GrammarAdminPage() {
         ? (
           <>
             <h1>스텝1! 이태원에서 바로 먹히는 영어 회화 실전 문법!</h1>
-            {grammar.introduction}
-            <button
-              isOpen={isOpen}
-              type="button"
-              onClick={handleClickOpenIntroduction}
-            >
-              인트로 수정하기
-            </button>
+            {!isOpen
+              && (
+                <>
+                  <p>{grammar.introduction}</p>
+                  <button
+                    isOpen={isOpen}
+                    type="button"
+                    onClick={handleClickOpenIntroduction}
+                  >
+                    인트로 수정하기
+                  </button>
+                </>
+              ) }
             {isOpen ? (
               <>
                 <GrammarIntroduction
