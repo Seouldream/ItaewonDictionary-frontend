@@ -1,19 +1,17 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { ClassicEditor } from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import GrammarIntroduction from '../../components/GrammarIntroduction';
+import useGrammarAdminFormStore from '../../hooks/useGrammarAdminFormStore';
 import useGrammarStore from '../../hooks/useGrammarStore';
 
 export default function GrammarAdminPage() {
   const grammarStore = useGrammarStore();
+  const grammarAdminFormStore = useGrammarAdminFormStore();
 
   const [isOpen, toggle] = useState(false);
-
-  useEffect(() => {
-    grammarStore.fetchGrammar();
-  }, []);
 
   // ToDo 백엔드 생성후 오픈
   // const { grammar } = grammarStore;
@@ -23,6 +21,13 @@ export default function GrammarAdminPage() {
     introduction: '영어를 말하기 위해서 가장 기초적인 문법들만 모아놓았어요! 더 이상의 문법은 담지 않았어요. 나머지는 직접 쓰고 활용하면서 조금 더 익혀보도록 해요!',
     content: '1형식',
   };
+
+  const { introduction } = grammarAdminFormStore;
+
+  useEffect(() => {
+    grammarStore.fetchGrammar();
+    grammarAdminFormStore.changeIntroduction(grammar.introduction);
+  }, []);
 
   const handleClickOpenIntroduction = () => {
     toggle(true);
@@ -38,8 +43,8 @@ export default function GrammarAdminPage() {
     // grammarFormStore.changeContent(content);
   };
 
-  const handleChangeIntroduction = () => {
-
+  const handleChangeIntroduction = (e) => {
+    grammarAdminFormStore.changeIntroduction(e.target.value);
   };
 
   return (
@@ -65,8 +70,8 @@ export default function GrammarAdminPage() {
             {isOpen ? (
               <>
                 <GrammarIntroduction
-                  introduction={grammar.introduction}
-                  onChange={handleChangeIntroduction}
+                  introduction={introduction}
+                  onChangeIntroduction={handleChangeIntroduction}
                 />
                 <button
                   isOpen={isOpen}

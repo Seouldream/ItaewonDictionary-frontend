@@ -1,10 +1,8 @@
 export default function GrammarIntroduction({
-  isOpen, introduction, onChangeIntroduction,
+  introduction, onChangeIntroduction,
 }) {
-
-  const grammarFormStore = useGr
-  const handleChangeIntroduction = () => {
-    onChangeIntroduction();
+  const handleChangeIntroduction = (e) => {
+    onChangeIntroduction(e);
   };
 
   return (
@@ -14,12 +12,12 @@ export default function GrammarIntroduction({
       >
         수정하기
       </label>
-      <input
+      <textarea
         id="input-introduction"
         htmlFor="input-introduction"
         name=""
         value={introduction}
-        onChange={(e) => grammarFormStore.changeIntroduction(e.target.value)}
+        onChange={handleChangeIntroduction}
       />
     </div>
 
