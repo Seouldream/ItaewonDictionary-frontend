@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { useState } from 'react';
-import useEventFormStore from '../hooks/useEventFormStore';
+import useEventFormStore from './useEventFormStore';
 
 const InputBox = styled.div`
   display: flex;

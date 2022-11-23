@@ -12,6 +12,9 @@ export default function Header() {
             <Link to="/grammar">이것만 알면 말할 수 있다 문법!</Link>
           </li>
           <li>
+            <Link to="/basicTemplates">이태원에서 바로 먹히는 1분 완성 템플릿!</Link>
+          </li>
+          <li>
             <Link to="/grammar/admin">관리자페이지 문법</Link>
           </li>
         </ul>

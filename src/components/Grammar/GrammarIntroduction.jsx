@@ -1,3 +1,5 @@
+import ConfirmEditModalButton from '../ConfirmEditModalButton';
+
 export default function GrammarIntroduction({
   introduction, onChangeIntroduction, onClickEditIntroduction,
 }) {
@@ -23,12 +25,15 @@ export default function GrammarIntroduction({
         value={introduction}
         onChange={handleChangeIntroduction}
       />
-      <button
+      <ConfirmEditModalButton
+        onClickEdit={handleClickEditIntroduction}
+      />
+      {/* <button
         type="button"
         onClick={handleClickEditIntroduction}
       >
         수정완료
-      </button>
+      </button> */}
     </div>
 
   );

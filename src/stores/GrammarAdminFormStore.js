@@ -33,12 +33,12 @@ export default class GrammarAdminFormStore extends Store {
     this.publish();
   }
 
-  async patchIntroduction({
+  async patchIntroduction(
     introduction,
-  }) {
-    await grammarApiService.patchIntroduction({
+  ) {
+    await grammarApiService.patchIntroduction(
       introduction,
-    });
+    );
 
     this.publish();
   }

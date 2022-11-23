@@ -10,7 +10,17 @@ export default class GrammarApiService {
 
     const { data } = await axios.get(url);
 
-    return data;
+    const { id, introduction, content } = data;
+
+    return { id, introduction, content };
+  }
+
+  async patchIntroduction(introduction) {
+    const url = `${baseUrl}/grammar/admin`;
+
+    await axios.patch(url, {
+      introduction,
+    });
   }
 }
 

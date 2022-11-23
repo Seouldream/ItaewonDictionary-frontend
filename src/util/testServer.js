@@ -10,10 +10,18 @@ const server = setupServer(
   rest.get(`${baseUrl}/grammar`, async (req, res, ctx) => res(ctx.json(
     {
       id: 1,
-      introduction: '영어를 말하기 위해서 가장 기초적인 문법들만 모아놓았어요!',
+      introduction: '문법 인트로덕션입니다.',
       content: '문장의 형식',
     },
   ))),
+
+  rest.patch(`${baseUrl}/grammar/admin`, async (req, res, ctx) => {
+    const { introduction } = await req.json();
+
+    return res(
+      ctx.status(204),
+    );
+  }),
 
   rest.get(`${baseUrl}/studies`, async (req, res, ctx) => res(ctx.json({
     studies: [

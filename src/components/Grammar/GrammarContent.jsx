@@ -1,5 +1,6 @@
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ConfirmEditModalButton from '../ConfirmEditModalButton';
 
 export default function GrammarContent({
   content, onChangeContent, onClickEditContent,
@@ -20,12 +21,9 @@ export default function GrammarContent({
         name=""
         onChange={handleChangeContent}
       />
-      <button
-        type="button"
-        onClick={handleClickEditContent}
-      >
-        컨텐츠 수정완료
-      </button>
+      <ConfirmEditModalButton
+        onClickEdit={handleClickEditContent}
+      />
     </div>
   );
 }

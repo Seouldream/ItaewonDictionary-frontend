@@ -1,5 +1,5 @@
 import { eventApiService } from '../services/EventApiService';
-import Store from './Store';
+import Store from '../stores/Store';
 
 export default class EventFormStore extends Store {
   constructor() {

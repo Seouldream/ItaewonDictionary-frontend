@@ -2,10 +2,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
 import { useEffect, useState } from 'react';
-import { ModalProvider } from 'styled-react-modal';
 import GrammarContent from '../../components/Grammar/GrammarContent';
 import GrammarIntroduction from '../../components/Grammar/GrammarIntroduction';
-import FancyModalButton from '../../components/StyledModal';
 import useGrammarAdminFormStore from '../../hooks/useGrammarAdminFormStore';
 import useGrammarStore from '../../hooks/useGrammarStore';
 
@@ -18,17 +16,9 @@ export default function GrammarAdminPage() {
   const [contentIsOpen, contentToggle] = useState(false);
 
   // ToDo 백엔드 생성후 오픈
-  // const { grammar } = grammarStore;
+  const { grammar } = grammarStore;
 
-  const grammar = {
-    id: 1,
-    introduction: '영어를 말하기 위해서 가장 기초적인 문법들만 모아놓았어요! 더 이상의 문법은 담지 않았어요. 나머지는 직접 쓰고 활용하면서 조금 더 익혀보도록 해요!',
-    content: '1형식 주어 + 동사 하나의 주어와 목적어를 필요로하지 않는 동사가 합쳐져 ~ … **첫번째는 자동사와 타동사 그리고 완전과 불완전이라는 용어입니다.** - 목적어 **없으면** 자동사- 목적어 **있으면** 타동사 - 보어가 **필요 없으면** 완전',
-  };
-
-  const { introduction } = grammarAdminFormStore;
-
-  const { content } = grammarAdminFormStore;
+  const { introduction, content } = grammarAdminFormStore;
 
   useEffect(() => {
     grammarStore.fetchGrammar();
@@ -42,12 +32,6 @@ export default function GrammarAdminPage() {
 
   const handleClickOpenContent = () => {
     contentToggle(true);
-  };
-
-  const handleChangeGrammar = (event, editor) => {
-    // ToDo CK에디터 핸들 체인지 구현필요
-    // const content = editor.getData();
-    // grammarFormStore.changeContent(content);
   };
 
   const handleChangeIntroduction = (e) => {
@@ -119,7 +103,6 @@ export default function GrammarAdminPage() {
               />
             )
               : null}
-            <FancyModalButton />
           </>
         )
         : <p>조금만 기다려주세요!</p>}

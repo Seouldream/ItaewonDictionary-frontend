@@ -10,24 +10,41 @@ const StyledModal = Modal.styled`
 
   `;
 
-export default function FancyModalButton() {
+export default function ConfirmEditModalButton({
+  onClickEdit,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = (e) => {
-    console.log('event', e);
     setIsOpen(!isOpen);
+  };
+
+  const handleClickEdit = () => {
+    toggleModal();
+    onClickEdit();
   };
 
   return (
     <>
-      <button type="button" onClick={toggleModal}>Click me</button>
+      <button type="button" onClick={toggleModal}>수정 완료</button>
       <StyledModal
         isOpen={isOpen}
         onBackgroundClick={toggleModal}
         onEscapeKeydown={toggleModal}
       >
-        <span>I am a modal!</span>
-        <button type="button" onClick={toggleModal}>Close me</button>
+        <span>수정하시겠습니까?</span>
+        <button
+          type="button"
+          onClick={handleClickEdit}
+        >
+          완료
+        </button>
+        <button
+          type="button"
+          onClick={toggleModal}
+        >
+          취소
+        </button>
       </StyledModal>
     </>
   );
