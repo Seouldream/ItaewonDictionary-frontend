@@ -83,7 +83,7 @@ export default function GrammarAdminPage() {
 
   return (
     <>
-      <h1>스텝1! 이태원에서 바로 먹히는 영어 회화 실전 문법!</h1>
+      <h1>스텝1!!! 이태원에서 바로 먹히는 영어 회화 실전 문법!</h1>
       <>
         {!introductionIsOpen
               && (
