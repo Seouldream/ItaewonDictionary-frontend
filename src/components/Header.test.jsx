@@ -14,7 +14,7 @@ jest.mock('react-router-dom', () => ({
 test('Header', () => {
   render(<Header />);
 
-  screen.getByText(/Home/);
-  screen.getByText(/입문자/);
-  screen.getByText(/주니어/);
+  screen.getByText(/이것만 알면 말할 수 있다 문법!/);
+  screen.getByText(/이태원에서 바로 먹히는 1분 완성 템플릿!/);
+  screen.getByText(/관리자페이지 문법/);
 });

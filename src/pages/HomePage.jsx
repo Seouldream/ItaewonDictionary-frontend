@@ -1,5 +1,8 @@
 export default function HomePage() {
   return (
-    <p>Hello, world!</p>
+    <>
+      <p>이태원에서 먹히는 완벽 실전 영허 회화! 이태원 딕셔너리에 오신 것을 환영합니다.</p>
+      <p>이태원 뿐만 아니라 어디에서든 먹히는 제대로 된 영어를 무료로! 가르쳐드립니다.</p>
+    </>
   );
 }
