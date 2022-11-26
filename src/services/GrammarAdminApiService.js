@@ -28,8 +28,6 @@ export default class GrammarAdminApiService {
   }
 
   async patchContent(content) {
-    console.log('content', content);
-
     const url = `${baseUrl}/admin/grammar-content`;
 
     await axios.patch(url, {

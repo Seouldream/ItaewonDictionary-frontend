@@ -88,7 +88,7 @@ export default function GrammarAdminPage() {
         {!introductionIsOpen
               && (
                 <>
-                  <p>{grammar.introduction}</p>
+                  <pre>{grammar.introduction}</pre>
                   <button
                     type="button"
                     onClick={handleClickOpenIntroduction}
