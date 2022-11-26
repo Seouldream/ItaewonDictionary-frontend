@@ -1,16 +1,25 @@
 import {
+  fireEvent,
   render, screen,
 } from '@testing-library/react';
 
 import GrammarPage from './GrammarPage';
 
-// jest.mock('@ckeditor/ckeditor5-react', () => ({
-//   CKEditor: jest.fn(),
-// }));
-// jest.mock('@ckeditor/ckeditor5-build-classic', () => '');
+jest.mock('react-router-dom', () => ({
+  Link({ children, to }) {
+    return (
+      <a href={to}>
+        {children}
+      </a>
+    );
+  },
+}));
+
+const context = describe;
+
 let grammar;
 
-jest.mock('../hooks/useGrammarStore', () => () => ({
+jest.mock('../../hooks/useGrammarStore', () => () => ({
   grammar,
   fetchGrammar: jest.fn(),
 }));
@@ -24,11 +33,21 @@ describe('GrammarPage', () => {
     };
   });
 
-  it('renders GrammarPage', async () => {
-    render(<GrammarPage />);
+  context('renders GrammarPage', () => {
+    it('shows info texts', async () => {
+      render(<GrammarPage />);
 
-    screen.getByText(/이태원에서 바로 먹히는 영어 회화 실전 문법!/);
-    screen.getByText(/영어를 말하기 위한 가장 기초적인 문법들만 모아놓았어요!/);
-    screen.getByText(/1형식/);
+      screen.getByText(/이태원에서 바로 먹히는 영어 회화 실전 문법!/);
+      screen.getByText(/실전 문법을 완료했다면?/);
+      screen.getByText(/1형식/);
+    });
+
+    it('swich to Link page', async () => {
+      render(<GrammarPage />);
+
+      screen.getByText('두번째 스텝! 이태원에서 바로먹히는 1분 완성 템플릿 배우러가기');
+
+      fireEvent.click(screen.getByText('두번째 스텝! 이태원에서 바로먹히는 1분 완성 템플릿 배우러가기'));
+    });
   });
 });

@@ -15,11 +15,33 @@ const server = setupServer(
     },
   ))),
 
-  rest.patch(`${baseUrl}/grammar/admin`, async (req, res, ctx) => {
+  rest.patch(`${baseUrl}/admin/grammar-introduction`, async (req, res, ctx) => {
     const { introduction } = await req.json();
 
     return res(
       ctx.status(204),
+    );
+  }),
+
+  rest.patch(`${baseUrl}/admin/grammar-content`, async (req, res, ctx) => {
+    const { content } = await req.json();
+
+    return res(
+      ctx.status(204),
+    );
+  }),
+
+  rest.post(`${baseUrl}/admin/grammar`, async (req, res, ctx) => {
+    const { introduction, content } = await req.json();
+
+    return res(
+      ctx.json(
+        {
+          id: 1,
+          introduction: '문법 첫 안내 글',
+          content: '문장의 5형식에 관한 첫 글입니다.',
+        },
+      ),
     );
   }),
 
@@ -37,19 +59,6 @@ const server = setupServer(
       },
     ],
   }))),
-
-  rest.post(`${baseUrl}/talks/post/new`, async (req, res, ctx) => {
-    const { title, hashTags, content } = await req.json();
-
-    return res(
-      ctx.data({
-        id: 1,
-        title: 'test server',
-        hashTags: 'java,react',
-        content: 'this is from test server',
-      }),
-    );
-  }),
 
   rest.post(`${baseUrl}/events/post/new`, async (req, res, ctx) => {
     const {

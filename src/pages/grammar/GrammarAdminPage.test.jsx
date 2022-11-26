@@ -10,6 +10,14 @@ let introduction;
 
 let content;
 
+const navigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  useNavigate() {
+    return navigate;
+  },
+}));
+
 jest.mock('../../hooks/useGrammarStore', () => () => ({
   grammar,
   fetchGrammar: jest.fn(),

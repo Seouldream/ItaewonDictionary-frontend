@@ -16,10 +16,18 @@ export default class GrammarApiService {
   }
 
   async patchIntroduction(introduction) {
-    const url = `${baseUrl}/grammar/admin`;
+    const url = `${baseUrl}/grammarIntroduction/admin`;
 
     await axios.patch(url, {
       introduction,
+    });
+  }
+
+  async patchContent(content) {
+    const url = `${baseUrl}/grammarContent/admin`;
+
+    await axios.patch(url, {
+      content,
     });
   }
 }

@@ -28,13 +28,6 @@ export default function GrammarIntroduction({
       <ConfirmEditModalButton
         onClickEdit={handleClickEditIntroduction}
       />
-      {/* <button
-        type="button"
-        onClick={handleClickEditIntroduction}
-      >
-        수정완료
-      </button> */}
     </div>
-
   );
 }

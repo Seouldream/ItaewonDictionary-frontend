@@ -1,4 +1,4 @@
-import { grammarApiService } from '../services/GrammarApiService';
+import { grammarAdminApiService } from '../services/GrammarAdminApiService';
 import Store from './Store';
 
 export default class GrammarAdminFormStore extends Store {
@@ -11,6 +11,41 @@ export default class GrammarAdminFormStore extends Store {
     this.state = '';
   }
 
+  async createGrammar(
+    grammar,
+  ) {
+    const { introduction, content } = grammar;
+
+    await grammarAdminApiService.createGrammar({ introduction, content });
+
+    this.publish();
+  }
+
+  async patchIntroduction(
+    introduction,
+  ) {
+    await grammarAdminApiService.patchIntroduction(
+      introduction,
+    );
+
+    this.publish();
+  }
+
+  async patchContent(
+    content,
+  ) {
+    await grammarAdminApiService.patchContent(
+      content,
+    );
+
+    this.publish();
+  }
+
+  clearTextArea() {
+    this.introduction = '';
+    this.content = '';
+  }
+
   changeIntroduction(introduction) {
     this.introduction = introduction;
 
@@ -19,36 +54,6 @@ export default class GrammarAdminFormStore extends Store {
 
   changeContent(content) {
     this.content = content;
-
-    this.publish();
-  }
-
-  async createGrammar({
-    introduction, content,
-  }) {
-    await grammarApiService.createGrammar({
-      introduction, content,
-    });
-
-    this.publish();
-  }
-
-  async patchIntroduction(
-    introduction,
-  ) {
-    await grammarApiService.patchIntroduction(
-      introduction,
-    );
-
-    this.publish();
-  }
-
-  async patchContent({
-    content,
-  }) {
-    await grammarApiService.patchContent({
-      content,
-    });
 
     this.publish();
   }

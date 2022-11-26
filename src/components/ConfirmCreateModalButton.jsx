@@ -10,8 +10,8 @@ const StyledModal = Modal.styled`
 
   `;
 
-export default function ConfirmEditModalButton({
-  onClickEdit,
+export default function ConfirmCreateModalButton({
+  onClickCreate,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,9 +19,9 @@ export default function ConfirmEditModalButton({
     setIsOpen(!isOpen);
   };
 
-  const handleClickEdit = () => {
+  const handleClickCreate = () => {
     toggleModal();
-    onClickEdit();
+    onClickCreate();
   };
 
   return (
@@ -30,19 +30,20 @@ export default function ConfirmEditModalButton({
         type="button"
         onClick={toggleModal}
       >
-        수정 완료
+        작성 완료
       </button>
       <StyledModal
         isOpen={isOpen}
         onBackgroundClick={toggleModal}
         onEscapeKeydown={toggleModal}
       >
-        <span>수정하시겠습니까?</span>
+        <span>저장하시겠습니까?</span>
         <button
           type="button"
-          onClick={handleClickEdit}
+          name="confirm"
+          onClick={handleClickCreate}
         >
-          완료
+          확인
         </button>
         <button
           type="button"

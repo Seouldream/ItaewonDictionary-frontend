@@ -2,8 +2,10 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GrammarContent from '../../components/Grammar/GrammarContent';
 import GrammarIntroduction from '../../components/Grammar/GrammarIntroduction';
+import useForceUpdate from '../../hooks/useForceUpdate';
 import useGrammarAdminFormStore from '../../hooks/useGrammarAdminFormStore';
 import useGrammarStore from '../../hooks/useGrammarStore';
 
@@ -15,16 +17,28 @@ export default function GrammarAdminPage() {
 
   const [contentIsOpen, contentToggle] = useState(false);
 
-  // ToDo 백엔드 생성후 오픈
   const { grammar } = grammarStore;
 
   const { introduction, content } = grammarAdminFormStore;
+
+  const navigate = useNavigate();
+
+  function convertToHtml(element) {
+    return <div dangerouslySetInnerHTML={{ __html: element }} />;
+  }
+
+  const convertedContent = convertToHtml(grammar.content);
 
   useEffect(() => {
     grammarStore.fetchGrammar();
     grammarAdminFormStore.changeIntroduction(grammar.introduction);
     grammarAdminFormStore.changeContent(grammar.content);
   }, []);
+
+  const handleClickNavigateToCreateGrammar = () => {
+    grammarAdminFormStore.clearTextArea();
+    navigate('/grammar/admin/new');
+  };
 
   const handleClickOpenIntroduction = () => {
     introToggle(true);
@@ -38,31 +52,40 @@ export default function GrammarAdminPage() {
     grammarAdminFormStore.changeIntroduction(e.target.value);
   };
 
-  const handleClickEditIntroduction = () => {
+  const handleClickEditIntroduction = async () => {
     introToggle(false);
-    // ToDo : 서버를 만들때 완성 필요
-    // grammarAdminFormStore.patchIntroduction(introduction);
+    await grammarAdminFormStore.patchIntroduction(introduction);
+    grammarStore.fetchGrammar();
   };
 
   const handleChangeContent = (editor) => {
     const modifiedContent = editor.getData();
+
     grammarAdminFormStore.changeContent(modifiedContent);
   };
 
-  const handleClickEditContent = () => {
+  const handleClickEditContent = async () => {
     contentToggle(false);
-    // ToDo : 서버를 만들때 완성 필요
-    // grammarAdminFormStore.patchContent(content);
+    await grammarAdminFormStore.patchContent(content);
+    grammarStore.fetchGrammar();
   };
+
+  if (!grammar.id) {
+    return (
+      <div>
+        <h1>문법 컨텐츠가 없다면?</h1>
+        <button type="button" onClick={handleClickNavigateToCreateGrammar}>
+          첫 문법 컨텐츠 만들러 가기
+        </button>
+      </div>
+    );
+  }
 
   return (
     <>
-      {' '}
-      {grammar
-        ? (
-          <>
-            <h1>스텝1! 이태원에서 바로 먹히는 영어 회화 실전 문법!</h1>
-            {!introductionIsOpen
+      <h1>스텝1! 이태원에서 바로 먹히는 영어 회화 실전 문법!</h1>
+      <>
+        {!introductionIsOpen
               && (
                 <>
                   <p>{grammar.introduction}</p>
@@ -74,19 +97,19 @@ export default function GrammarAdminPage() {
                   </button>
                 </>
               ) }
-            {introductionIsOpen ? (
-              <GrammarIntroduction
-                introduction={introduction}
-                onChangeIntroduction={handleChangeIntroduction}
-                onClickEditIntroduction={handleClickEditIntroduction}
-              />
-            )
-              : null}
-            <hr />
-            {!contentIsOpen
+        {introductionIsOpen ? (
+          <GrammarIntroduction
+            introduction={introduction}
+            onChangeIntroduction={handleChangeIntroduction}
+            onClickEditIntroduction={handleClickEditIntroduction}
+          />
+        )
+          : null}
+        <hr />
+        {!contentIsOpen
             && (
               <>
-                <p>{grammar.content}</p>
+                {convertedContent}
                 <button
                   type="button"
                   onClick={handleClickOpenContent}
@@ -95,17 +118,15 @@ export default function GrammarAdminPage() {
                 </button>
               </>
             )}
-            {contentIsOpen ? (
-              <GrammarContent
-                content={content}
-                onChangeContent={handleChangeContent}
-                onClickEditContent={handleClickEditContent}
-              />
-            )
-              : null}
-          </>
+        {contentIsOpen ? (
+          <GrammarContent
+            content={content}
+            onChangeContent={handleChangeContent}
+            onClickEditContent={handleClickEditContent}
+          />
         )
-        : <p>조금만 기다려주세요!</p>}
+          : null}
+      </>
     </>
   );
 }

@@ -9,5 +9,5 @@ test('App', () => {
     </MemoryRouter>
   ));
 
-  screen.getByText(/Hello/);
+  screen.getByText(/ItaewonDictionary/);
 });
