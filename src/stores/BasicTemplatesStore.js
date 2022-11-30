@@ -39,6 +39,9 @@ export default class BasicTemplatesStore extends Store {
 
       this.publish();
     } catch (error) {
+      if (error === undefined) {
+        error.response.data = '';
+      }
       const { message } = error.response.data;
       this.changeBasicTemplatesStates('notFound', { errorMessage: message });
     }

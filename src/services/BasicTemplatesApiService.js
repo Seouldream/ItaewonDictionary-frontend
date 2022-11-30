@@ -6,7 +6,7 @@ const baseUrl = config.apiBaseUrl;
 
 export default class BasicTemplatesApiService {
   async fetchBasicTemplate() {
-    const url = `${baseUrl}/basicTemplate`;
+    const url = `${baseUrl}/basicTemplates`;
 
     const { data } = await axios.get(url);
 

@@ -1,19 +1,6 @@
-import server from '../util/testServer';
 import BasicTemplatesStore from './BasicTemplatesStore';
 
 const context = describe;
-
-beforeAll(() => {
-  server.listen();
-});
-
-afterEach(() => {
-  server.resetHandlers();
-});
-
-afterAll(() => {
-  server.close();
-});
 
 describe('BasicTemplateStore', () => {
   let basicTemplatesStore;
