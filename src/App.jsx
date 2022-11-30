@@ -8,7 +8,7 @@ import PracticalTemplatePage from './pages/practicalTemplates/PracticalTemplateP
 import GrammarAdminPage from './pages/grammar/GrammarAdminPage';
 import GrammarAdminCreatePage from './pages/grammar/GrammarAdminCreatePage';
 import BasicTemplatesAdminPage from './pages/basicTemplates/BasicTemplatesAdminPage';
-import BasicTemplateFormPage from './components/BasicTemplate/BasicTemplateFormPage';
+import BasicTemplateFormPage from './pages/basicTemplates/BasicTemplateFormPage';
 
 export default function App() {
   return (
@@ -27,5 +27,5 @@ export default function App() {
         </Routes>
       </ModalProvider>
     </div>
-  );
+  
 }

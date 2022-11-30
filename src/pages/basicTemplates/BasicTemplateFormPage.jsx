@@ -8,26 +8,6 @@ export default function BasicTemplateFormPage() {
 
   const navigate = useNavigate();
 
-  const handleChangeTitle = (e) => {
-    basicTemplatesAdminFormStore.changeTitle(e.target.value);
-  };
-
-  const handleChangeEnglishSentence = (e) => {
-    basicTemplatesAdminFormStore.changeEnglishSentence(e.target.value);
-  };
-
-  const handleChangeKoreanSentence = (e) => {
-    basicTemplatesAdminFormStore.changeKoreanSentence(e.target.value);
-  };
-
-  const handleChangeDescription = (e) => {
-    basicTemplatesAdminFormStore.changeDescription(e.target.value);
-  };
-
-  const handleChangeYoutubeUrl = (e) => {
-    basicTemplatesAdminFormStore.changeYoutubeUrl(e.target.value);
-  };
-
   const handleSubmitBasicTemplateForm = (event) => {
     basicTemplatesAdminFormStore.createBasicTemplate(basicTemplateForm);
 
@@ -48,7 +28,7 @@ export default function BasicTemplateFormPage() {
             id="input-title"
             name="title"
             value={basicTemplateForm.title}
-            onChange={handleChangeTitle}
+            onChange={(e) => basicTemplatesAdminFormStore.changeTitle(e.target.value)}
           />
         </div>
         <div>
@@ -57,7 +37,7 @@ export default function BasicTemplateFormPage() {
             id="input-englishSentence"
             name="englishSentence"
             value={basicTemplateForm.englishSentence}
-            onChange={handleChangeEnglishSentence}
+            onChange={(e) => basicTemplatesAdminFormStore.changeEnglishSentence(e.target.value)}
           />
         </div>
         <div>
@@ -66,7 +46,7 @@ export default function BasicTemplateFormPage() {
             id="input-koreanSentence"
             name="koreanSentence"
             value={basicTemplateForm.koreanSentence}
-            onChange={handleChangeKoreanSentence}
+            onChange={(e) => basicTemplatesAdminFormStore.changeKoreanSentence(e.target.value)}
           />
         </div>
         <div>
@@ -75,7 +55,7 @@ export default function BasicTemplateFormPage() {
             id="input-description"
             name="description"
             value={basicTemplateForm.description}
-            onChange={handleChangeDescription}
+            onChange={(e) => basicTemplatesAdminFormStore.changeDescription(e.target.value)}
           />
         </div>
         <div>
@@ -84,7 +64,7 @@ export default function BasicTemplateFormPage() {
             id="input-youtubeUrl"
             name="youtubeUrl"
             value={basicTemplateForm.youtubeUrl}
-            onChange={handleChangeYoutubeUrl}
+            onChange={(e) => basicTemplatesAdminFormStore.changeYoutubeUrl(e.target.value)}
           />
         </div>
         <button type="submit">
