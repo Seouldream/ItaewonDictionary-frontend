@@ -45,7 +45,7 @@ export default class BasicTemplatesStore extends Store {
       const { message } = error.response.data;
       this.changeBasicTemplatesStates('notFound', { errorMessage: message });
     }
-  }
+}
 
   changeBasicTemplatesStates(state, { errorMessage = '' } = {}) {
     this.errorMessage = errorMessage;
