@@ -15,7 +15,10 @@ export default function Header() {
             <Link to="/basicTemplates">이태원에서 바로 먹히는 1분 완성 템플릿!</Link>
           </li>
           <li>
-            <Link to="/grammar/admin">관리자페이지 문법</Link>
+            <Link to="/grammar/admin">문법 관리자페이지</Link>
+          </li>
+          <li>
+            <Link to="/basicTemplates/admin">1분 완성 템플릿 관리자페이지</Link>
           </li>
         </ul>
       </nav>

@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import BasicTemplates from '../../components/BasicTemplate/BasicTemplates';
-import useBasicTemplateStore from '../../hooks/useBasicTemplateStore';
+import BasicTemplates from '../../components/basicTemplate/BasicTemplates';
+import useBasicTemplatesStore from '../../hooks/useBasicTemplatesStore';
 
 export default function BasicTemplatePage() {
   const navigagte = useNavigate();
-  const basicTemplateStore = useBasicTemplateStore();
+  const basicTemplatesStore = useBasicTemplatesStore();
 
-  const { basicTemplates } = basicTemplateStore;
+  const { basicTemplates } = basicTemplatesStore;
 
   const handleClickNavigate = () => {
     navigagte('/practicalTemplates');

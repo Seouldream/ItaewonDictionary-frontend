@@ -4,7 +4,7 @@ import config from '../util/config';
 
 const baseUrl = config.apiBaseUrl;
 
-export default class BasicTemlateApiService {
+export default class BasicTemplatesApiService {
   async fetchBasicTemplate() {
     const url = `${baseUrl}/basicTemplate`;
 
@@ -20,4 +20,4 @@ export default class BasicTemlateApiService {
   }
 }
 
-export const basicTemplateApiService = new BasicTemlateApiService();
+export const basicTemplatesApiService = new BasicTemplatesApiService();

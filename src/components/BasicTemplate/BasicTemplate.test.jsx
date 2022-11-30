@@ -33,19 +33,8 @@ describe('BasicTemplate', () => {
     screen.getByText(/Hey -! How are you?/);
     screen.getByText(/해석 및 풀이 보기/);
 
-    screen.getByText('안녕 무슨 일이야?');
-  });
-
-  it('clicks toggle buttont', () => {
-    render((
-      <BasicTemplate
-        basicTemplate={basicTemplate}
-        index={index}
-      />
-    ));
-
     fireEvent.click(screen.getByText(/해석 및 풀이 보기/));
-    // details 확인하는법 jest 에서 찾기
+
     screen.getByText('안녕 무슨 일이야?');
   });
 });

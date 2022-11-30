@@ -1,4 +1,4 @@
-import BasicTemplatePage from './BasicTemplatePage';
+import BasicTemplatePage from './BasicTemplatesPage';
 
 const { render, screen, fireEvent } = require('@testing-library/react');
 
