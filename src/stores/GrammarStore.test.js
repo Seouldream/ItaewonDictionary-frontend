@@ -1,19 +1,6 @@
-import server from '../util/testServer';
 import GrammarStore from './GrammarStore';
 
 const context = describe;
-
-beforeAll(() => {
-  server.listen();
-});
-
-afterEach(() => {
-  server.resetHandlers();
-});
-
-afterAll(() => {
-  server.close();
-});
 
 describe('GrammarStore', () => {
   let grammarStore;

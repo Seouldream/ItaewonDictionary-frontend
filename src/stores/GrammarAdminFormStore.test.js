@@ -1,19 +1,6 @@
-import server from '../util/testServer';
 import GrammarAdminFormStore from './GrammarAdminFormStore';
 
 const context = describe;
-
-beforeAll(() => {
-  server.listen();
-});
-
-afterEach(() => {
-  server.restoreHandlers();
-});
-
-afterAll(() => {
-  server.close();
-});
 
 describe('GrammarAdminFormStore', () => {
   let grammarAdminFormStore;

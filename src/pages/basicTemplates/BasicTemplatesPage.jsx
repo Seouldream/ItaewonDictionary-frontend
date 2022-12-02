@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import BasicTemplates from '../../components/basicTemplate/BasicTemplates';
 import useBasicTemplatesAdminFormStore from '../../hooks/useBasicTemplatesAdminFormStore';
 
-export default function BasicTemplatePage() {
+export default function BasicTemplatesPage() {
   const navigagte = useNavigate();
   const basicTemplatesStore = useBasicTemplatesAdminFormStore();
 

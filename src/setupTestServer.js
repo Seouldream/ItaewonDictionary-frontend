@@ -1,4 +1,4 @@
-import testServer from './util/testServer';
+import testServer from './testServer';
 
 beforeAll(() => {
   testServer.listen();

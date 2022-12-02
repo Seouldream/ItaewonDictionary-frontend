@@ -24,6 +24,7 @@ jest.mock('../../hooks/useBasicTemplatesStore', () => () => ({
 jest.mock('../../hooks/useBasicTemplatesAdminFormStore', () => () => ({
   basicTemplates,
   basicTemplateForm,
+  fetchBasicTemplates: jest.fn(),
   changeTitle: jest.fn(),
   ChangeEnglishSentence: jest.fn(),
   ChangeKoreanSentence: jest.fn(),

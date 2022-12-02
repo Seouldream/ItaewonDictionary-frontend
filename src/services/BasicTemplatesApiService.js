@@ -9,7 +9,6 @@ export default class BasicTemplatesApiService {
     const url = `${baseUrl}/basicTemplates`;
 
     const { data } = await axios.get(url);
-    console.log('data', data);
 
     const { basicTemplates } = data;
 
