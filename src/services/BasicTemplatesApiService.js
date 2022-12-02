@@ -5,18 +5,15 @@ import config from '../util/config';
 const baseUrl = config.apiBaseUrl;
 
 export default class BasicTemplatesApiService {
-  async fetchBasicTemplate() {
+  async fetchBasicTemplates() {
     const url = `${baseUrl}/basicTemplates`;
 
     const { data } = await axios.get(url);
+    console.log('data', data);
 
-    const {
-      id, title, englishSentence, koreanSentence, youtubeUrl, description,
-    } = data;
+    const { basicTemplates } = data;
 
-    return {
-      id, title, englishSentence, koreanSentence, youtubeUrl, description,
-    };
+    return basicTemplates;
   }
 }
 

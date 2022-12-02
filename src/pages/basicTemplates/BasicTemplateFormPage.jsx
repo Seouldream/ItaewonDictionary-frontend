@@ -9,8 +9,10 @@ export default function BasicTemplateFormPage() {
   const navigate = useNavigate();
 
   const handleSubmitBasicTemplateForm = (event) => {
+    // ToDo 1. 빈칸 입력시 생성 안하도록 프론트 예외 처리 필요
+    // ToDo 2. youtube Url 지정양식으로만 입력할수 있도록 예외 처리 필요
     basicTemplatesAdminFormStore.createBasicTemplate(basicTemplateForm);
-
+    navigate('/basicTemplates/admin');
     event.preventDefault();
   };
 

@@ -41,7 +41,7 @@ export default function BasicTemplateAdmin({
         <iframe
           width="560"
           height="315"
-          src={basicTemplate.youtubeUrl}
+          src="https://www.youtube.com/embed/L9Ijl9fDcZs"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer;

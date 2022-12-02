@@ -63,7 +63,7 @@ export default function BasicTemplateEditForm({
         />
       </div>
       <ConfirmEditModalButton
-        onClickEdit={handleClickConfirmUpdate}
+        onClickEdit={() => handleClickConfirmUpdate(basicTemplateForm.id)}
         handleClickCancel={handleClickCancelUpdate}
       />
     </>

@@ -1,16 +1,27 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import BasicTemplates from '../../components/basicTemplate/BasicTemplates';
-import useBasicTemplatesStore from '../../hooks/useBasicTemplatesStore';
+import useBasicTemplatesAdminFormStore from '../../hooks/useBasicTemplatesAdminFormStore';
 
 export default function BasicTemplatePage() {
   const navigagte = useNavigate();
-  const basicTemplatesStore = useBasicTemplatesStore();
+  const basicTemplatesStore = useBasicTemplatesAdminFormStore();
+
+  useEffect(() => {
+    basicTemplatesStore.fetchBasicTemplates();
+  }, []);
 
   const { basicTemplates } = basicTemplatesStore;
 
   const handleClickNavigate = () => {
     navigagte('/practicalTemplates');
   };
+
+  if (basicTemplates.length === 0) {
+    return (
+      <p>컨텐츠 준비중입니다. 잠시만 기다려주세요.</p>
+    );
+  }
 
   return (
     <>

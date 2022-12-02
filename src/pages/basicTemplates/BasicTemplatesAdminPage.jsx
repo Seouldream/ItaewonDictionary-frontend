@@ -1,25 +1,30 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import BasicTemplatesAdmin from '../../components/basicTemplate/BasicTemplatesAdmin';
 import useBasicTemplatesAdminFormStore from '../../hooks/useBasicTemplatesAdminFormStore';
-import useBasicTemplatesStore from '../../hooks/useBasicTemplatesStore';
+import useForceUpdate from '../../hooks/useForceUpdate';
 
 export default function BasicTemplatesAdminPage() {
   const navigagte = useNavigate();
 
-  const basicTemplatesStore = useBasicTemplatesStore();
+  const forceUpdate = useForceUpdate();
 
   const basicTemplatesAdminFormStore = useBasicTemplatesAdminFormStore();
 
   const { basicTemplateForm } = basicTemplatesAdminFormStore;
 
-  const { basicTemplates } = basicTemplatesStore;
+  const { basicTemplates } = basicTemplatesAdminFormStore;
+
+  useEffect(() => {
+    basicTemplatesAdminFormStore.fetchBasicTemplates();
+  }, []);
 
   const handleClickNavigateToPracticalTemplates = () => {
     navigagte('/practicalTemplates');
   };
 
   const handleClickNavigateToBasicTemplateFromPage = () => {
+    basicTemplatesAdminFormStore.clearTextArea();
     navigagte('/basicTemplates/admin/new');
   };
 
@@ -50,26 +55,45 @@ export default function BasicTemplatesAdminPage() {
   const handleClickOpenBasicTemplateUpdateForm = (id, index) => {
     basicTemplatesAdminFormStore.fetchBasicTemplate(id);
 
-    const isOpens = initialSetting.map((button, idx) => {
+    const open = initialSetting.map((button, idx) => {
       if (index === idx) {
         return true;
       }
       return false;
     });
-    toggle(isOpens);
+    toggle(open);
   };
 
-  const handleClickConfirmUpdate = () => {
-    basicTemplatesAdminFormStore.updateBasicTemplate(basicTemplateForm);
+  const handleClickConfirmUpdate = async (id) => {
+    const updatedBasicForm = {
+      title: basicTemplateForm.title,
+      englishSentence: basicTemplateForm.englishSentence,
+      koreanSentence: basicTemplateForm.koreanSentence,
+      description: basicTemplateForm.description,
+      youtubeUrl: basicTemplateForm.youtubeUrl,
+    };
+    await basicTemplatesAdminFormStore.updateBasicTemplate(id, updatedBasicForm);
+    basicTemplatesAdminFormStore.fetchBasicTemplates();
+    toggle(initialSetting);
   };
 
   const handleClickCancelUpdate = () => {
     toggle(initialSetting);
   };
 
-  const handleClickDeleteBasicTemplate = (id) => {
-    basicTemplatesAdminFormStore.deleteBasicTemplate(id);
+  const handleClickDeleteBasicTemplate = async (id) => {
+    await basicTemplatesAdminFormStore.deleteBasicTemplate(id);
+    basicTemplatesAdminFormStore.fetchBasicTemplates();
   };
+
+  if (basicTemplates.length === 0) {
+    return (
+      <>
+        <p>쪼매마 기다리소</p>
+        <Link to="/basicTemplates/admin/new">첫 템플릿 등록하러 가기</Link>
+      </>
+    );
+  }
 
   return (
     <>

@@ -5,45 +5,53 @@ import config from '../util/config';
 const baseUrl = config.apiBaseUrl;
 
 export default class BasicTemplatesAdminApiService {
+  async fetchBasicTemplates() {
+    const url = `${baseUrl}/basicTemplates`;
+
+    const { data } = await axios.get(url);
+
+    const { basicTemplates } = data;
+
+    return basicTemplates;
+  }
+
   async createBasicTemplate(basicTemplate) {
     const url = `${baseUrl}/admin/basicTemplates`;
 
     const {
-      title, koreanSentence, englishSentence, youtubeUrl, description,
+      title, englishSentence, koreanSentence, youtubeUrl, description,
     } = basicTemplate;
 
     const { data } = await axios.post(url, {
-      title, koreanSentence, englishSentence, youtubeUrl, description,
+      title, englishSentence, koreanSentence, youtubeUrl, description,
     });
 
     return {
       id: data.id,
       title: data.title,
-      koreanSentence: data.koreanSentence,
       englishSentence: data.englishSentence,
+      koreanSentence: data.koreanSentence,
       youtubeUrl: data.youtubeUrl,
       description: description.data,
     };
   }
 
-  async updateBasicTemplate(basicTemplate) {
+  async updateBasicTemplate(id, basicTemplate) {
+    const url = `${baseUrl}/admin/basicTemplates/${id}`;
+
     const {
-      title, koreanSentence, englishSentence, youtubeUrl, description,
+      title, englishSentence, koreanSentence, youtubeUrl, description,
     } = basicTemplate;
 
-    const url = `${baseUrl}/admin/basicTemplates`;
-
     await axios.patch(url, {
-      title, koreanSentence, englishSentence, youtubeUrl, description,
+      title, englishSentence, koreanSentence, youtubeUrl, description,
     });
   }
 
   async deleteBasicTemplate(id) {
-    const url = `${baseUrl}/admin/basicTemplates`;
+    const url = `${baseUrl}/admin/basicTemplates/${id}`;
 
-    await axios.delete(url, {
-      id,
-    });
+    await axios.delete(url);
   }
 }
 
