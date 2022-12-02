@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GrammarContent from '../../components/Grammar/GrammarContent';
 import GrammarIntroduction from '../../components/Grammar/GrammarIntroduction';
-import useForceUpdate from '../../hooks/useForceUpdate';
 import useGrammarAdminFormStore from '../../hooks/useGrammarAdminFormStore';
 import useGrammarStore from '../../hooks/useGrammarStore';
 
@@ -70,6 +69,10 @@ export default function GrammarAdminPage() {
     grammarStore.fetchGrammar();
   };
 
+  const handleClickCancelEditIntroduction = () => {
+    introToggle(false);
+  };
+
   if (!grammar.id) {
     return (
       <div>
@@ -88,7 +91,7 @@ export default function GrammarAdminPage() {
         {!introductionIsOpen
               && (
                 <>
-                  <p>{grammar.introduction}</p>
+                  <pre>{grammar.introduction}</pre>
                   <button
                     type="button"
                     onClick={handleClickOpenIntroduction}
@@ -102,6 +105,7 @@ export default function GrammarAdminPage() {
             introduction={introduction}
             onChangeIntroduction={handleChangeIntroduction}
             onClickEditIntroduction={handleClickEditIntroduction}
+            handleClickCancelEditIntroduction={handleClickCancelEditIntroduction}
           />
         )
           : null}

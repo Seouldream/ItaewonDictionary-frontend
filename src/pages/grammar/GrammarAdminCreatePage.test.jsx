@@ -1,6 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { useState as useStateMock } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import GrammarAdminCreatePage from './GrammarAdminCreatePage';
+
+const navigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  useNavigate() {
+    return navigate;
+  },
+}));
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),

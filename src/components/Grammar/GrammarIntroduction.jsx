@@ -2,6 +2,7 @@ import ConfirmEditModalButton from '../ConfirmEditModalButton';
 
 export default function GrammarIntroduction({
   introduction, onChangeIntroduction, onClickEditIntroduction,
+  handleClickCancelEditIntroduction,
 }) {
   const handleChangeIntroduction = (e) => {
     onChangeIntroduction(e);
@@ -27,6 +28,7 @@ export default function GrammarIntroduction({
       />
       <ConfirmEditModalButton
         onClickEdit={handleClickEditIntroduction}
+        handleClickCancel={handleClickCancelEditIntroduction}
       />
     </div>
   );

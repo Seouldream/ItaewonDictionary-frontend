@@ -14,22 +14,6 @@ export default class GrammarApiService {
 
     return { id, introduction, content };
   }
-
-  async patchIntroduction(introduction) {
-    const url = `${baseUrl}/grammarIntroduction/admin`;
-
-    await axios.patch(url, {
-      introduction,
-    });
-  }
-
-  async patchContent(content) {
-    const url = `${baseUrl}/grammarContent/admin`;
-
-    await axios.patch(url, {
-      content,
-    });
-  }
 }
 
 export const grammarApiService = new GrammarApiService();

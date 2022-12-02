@@ -9,8 +9,8 @@ const StyledModal = Modal.styled`
   justify-content: center;
   `;
 
-export default function ConfirmEditModalButton({
-  onClickEdit, handleClickCancel,
+export default function ConfirmDeleteModalButton({
+  onClickDelete,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,9 +18,9 @@ export default function ConfirmEditModalButton({
     setIsOpen(!isOpen);
   };
 
-  const handleClickEdit = () => {
+  const handleClickDelete = () => {
     toggleModal();
-    onClickEdit();
+    onClickDelete();
   };
 
   return (
@@ -29,23 +29,17 @@ export default function ConfirmEditModalButton({
         type="button"
         onClick={toggleModal}
       >
-        수정 완료
-      </button>
-      <button
-        type="button"
-        onClick={handleClickCancel}
-      >
-        취소
+        삭제하기
       </button>
       <StyledModal
         isOpen={isOpen}
         onBackgroundClick={toggleModal}
         onEscapeKeydown={toggleModal}
       >
-        <span>수정하시겠습니까?</span>
+        <span>삭제하시겠습니까?</span>
         <button
           type="button"
-          onClick={handleClickEdit}
+          onClick={handleClickDelete}
         >
           완료
         </button>
