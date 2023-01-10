@@ -1,5 +1,15 @@
+import styled from 'styled-components';
 import ConfirmDeleteModalButton from '../ConfirmDeleteModalButton';
 import BasicTemplateEditForm from './BasicTemplateEditForm';
+
+const AdminButton = styled.button`
+  border-radius: 1em;
+  background-color :#00C641;
+  color:white;
+  padding: 1em;
+  border-style: none;
+  margin: 1em 0.5em;
+`;
 
 export default function BasicTemplateAdmin({
   basicTemplate,
@@ -41,7 +51,7 @@ export default function BasicTemplateAdmin({
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/L9Ijl9fDcZs"
+          src={basicTemplate.youtubeUrl}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer;
@@ -61,7 +71,7 @@ export default function BasicTemplateAdmin({
       </details>
       <br />
       {!isOpen[index]
-      && <button type="button" onClick={handleClickUpdate}>수정하기</button>}
+      && <AdminButton type="button" onClick={handleClickUpdate}>수정하기</AdminButton>}
       <BasicTemplateEditForm
         isOpen={isOpen[index]}
         basicTemplateForm={basicTemplateForm}

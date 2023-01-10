@@ -1,6 +1,8 @@
 import {
   fireEvent, render, screen,
 } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
+import DefaultTheme from '../../styles/DefaultTheme';
 
 import BasicTemplateEditForm from './BasicTemplateEditForm';
 
@@ -27,10 +29,10 @@ const handleChangeYoutubeUrl = jest.fn();
 const handleClickCancelUpdate = jest.fn();
 const handleClickConfirmUpdate = jest.fn();
 
-describe('BasicTemplateEditForm', () => {
-  context('renders BasicTemplateEditForm', () => {
-    it('shows basicTemplateEditForm ', () => {
-      render(<BasicTemplateEditForm
+function renderBasicTemplateEditForm() {
+  render(
+    <ThemeProvider theme={DefaultTheme}>
+      <BasicTemplateEditForm
         isOpen={isOpen[index]}
         basicTemplateForm={basicTemplateForm}
         handleChangeTitle={handleChangeTitle}
@@ -40,7 +42,15 @@ describe('BasicTemplateEditForm', () => {
         handleChangeYoutubeUrl={handleChangeYoutubeUrl}
         handleClickConfirmUpdate={handleClickConfirmUpdate}
         handleClickCancelUpdate={handleClickCancelUpdate}
-      />);
+      />
+    </ThemeProvider>,
+  );
+}
+
+describe('BasicTemplateEditForm', () => {
+  context('renders BasicTemplateEditForm', () => {
+    it('shows basicTemplateEditForm ', () => {
+      renderBasicTemplateEditForm();
 
       screen.getByText('제목');
 
@@ -48,17 +58,7 @@ describe('BasicTemplateEditForm', () => {
     });
 
     it('changes input text.', () => {
-      render(<BasicTemplateEditForm
-        isOpen={isOpen[index]}
-        basicTemplateForm={basicTemplateForm}
-        handleChangeTitle={handleChangeTitle}
-        handleChangeEnglishSentence={handleChangeEnglishSentence}
-        handleChangeKoreanSentence={handleChangeKoreanSentence}
-        handleChangeDescription={handleChangeDescription}
-        handleChangeYoutubeUrl={handleChangeYoutubeUrl}
-        handleClickConfirmUpdate={handleClickConfirmUpdate}
-        handleClickCancelUpdate={handleClickCancelUpdate}
-      />);
+      renderBasicTemplateEditForm();
 
       screen.getByText('제목');
 
