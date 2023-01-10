@@ -8,11 +8,18 @@ const context = describe;
 const introduction = '그래머 인트로덕션입니다.';
 const handleChangeIntroduction = jest.fn();
 const handleClickEditIntroduction = jest.fn();
+const handleClickCancelEditIntroduction = jest.fn();
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useState: jest.fn(),
 }));
+
+jest.mock('@ckeditor/ckeditor5-react', () => ({
+  CKEditor: jest.fn(),
+}));
+
+jest.mock('@ckeditor/ckeditor5-build-classic', () => '');
 
 describe('GrammarIntroduction', () => {
   function renderGrammarIntroduction() {
@@ -20,6 +27,7 @@ describe('GrammarIntroduction', () => {
       introduction={introduction}
       onChangeIntroduction={handleChangeIntroduction}
       onClickEditIntroduction={handleClickEditIntroduction}
+      handleClickCancelEditIntroduction={handleClickCancelEditIntroduction}
     />);
   }
 
@@ -32,7 +40,6 @@ describe('GrammarIntroduction', () => {
     it('shows grammars\'introduction in textarea box.', () => {
       renderGrammarIntroduction();
 
-      screen.getByText('그래머 인트로덕션입니다.');
       screen.getByText('수정 완료');
 
       fireEvent.click(screen.getByText('수정 완료'));

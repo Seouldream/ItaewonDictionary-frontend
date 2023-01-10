@@ -1,5 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
 import BasicTemplateFormPage from './BasicTemplateFormPage';
+import DefaultTheme from '../../styles/DefaultTheme';
 
 const navigate = jest.fn();
 
@@ -41,7 +43,11 @@ const context = describe;
 describe('BasicTemplateFormPage', () => {
   context('renders BasicTemplateFormPage', () => {
     it('shows label texts', () => {
-      render(<BasicTemplateFormPage />);
+      render(
+        <ThemeProvider theme={DefaultTheme}>
+          <BasicTemplateFormPage />
+        </ThemeProvider>,
+      );
 
       screen.getByText('1분 완성 템플릿 작성하기');
 

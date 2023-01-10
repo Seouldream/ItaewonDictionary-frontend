@@ -1,11 +1,17 @@
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import styled from 'styled-components';
 import ConfirmEditModalButton from '../ConfirmEditModalButton';
 
+const EditorBox = styled.div`
+  padding-top: 1em;
+`;
 export default function GrammarIntroduction({
   introduction, onChangeIntroduction, onClickEditIntroduction,
   handleClickCancelEditIntroduction,
 }) {
-  const handleChangeIntroduction = (e) => {
-    onChangeIntroduction(e);
+  const handleChangeIntroduction = (event, editor) => {
+    onChangeIntroduction(editor);
   };
 
   const handleClickEditIntroduction = () => {
@@ -15,21 +21,23 @@ export default function GrammarIntroduction({
   return (
     <div>
       <label
+        hidden
         htmlFor="input-introduction"
       >
         수정하기
       </label>
-      <textarea
-        id="input-introduction"
-        htmlFor="input-introduction"
-        name=""
-        value={introduction}
-        onChange={handleChangeIntroduction}
-      />
-      <ConfirmEditModalButton
-        onClickEdit={handleClickEditIntroduction}
-        handleClickCancel={handleClickCancelEditIntroduction}
-      />
+      <EditorBox>
+        <CKEditor
+          editor={ClassicEditor}
+          data={introduction}
+          name=""
+          onChange={handleChangeIntroduction}
+        />
+        <ConfirmEditModalButton
+          onClickEdit={handleClickEditIntroduction}
+          handleClickCancel={handleClickCancelEditIntroduction}
+        />
+      </EditorBox>
     </div>
   );
 }

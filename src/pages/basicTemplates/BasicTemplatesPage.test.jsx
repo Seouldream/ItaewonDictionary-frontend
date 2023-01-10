@@ -43,8 +43,8 @@ test('basicTemplate', () => {
     screen.getByText('다음을 발음해보고 따라하면서 익혀보아요!');
 
     screen.getByText('실전 템플릿으로 바로가기!');
-
     fireEvent.click(screen.getByText('실전 템플릿으로 바로가기!'));
+
 
     expect(navigate).toBeCalledWith('/practicalTemplates');
   });

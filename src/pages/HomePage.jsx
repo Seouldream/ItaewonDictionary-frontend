@@ -1,8 +1,22 @@
+import styled from 'styled-components';
+import Applications from '../components/Applications';
+import Banner from '../components/Banner';
+import Information from '../components/Information';
+import Reviews from '../components/Reviews';
+
+const Container = styled.div`
+  padding-inline: calc((100% - 1200px) / 2);
+`;
+
 export default function HomePage() {
   return (
     <>
-      <p>이태원에서 먹히는 완벽 실전 영허 회화! 이태원 딕셔너리에 오신 것을 환영합니다.</p>
-      <p>이태원 뿐만 아니라 어디에서든 먹히는 제대로 된 영어를 무료로! 가르쳐드립니다.</p>
+      <Banner />
+      <Container>
+        <Applications />
+        <Information />
+        <Reviews />
+      </Container>
     </>
   );
 }

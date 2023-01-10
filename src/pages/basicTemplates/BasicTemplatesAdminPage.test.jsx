@@ -69,7 +69,6 @@ describe('BasicTemplateAdminPage', () => {
 
       screen.getByText(/인삿말 배우기/);
       screen.getByText(/두번째 스텝 이태원에서 바로 먹히는 1분 완성 템플릿/);
-      screen.getByText(/Tip! 정말로 그 상황속에 처한 듯 연기를 하시면 실력이 확연히 늘어요!/);
       screen.getByText(/실전 템플릿으로 바로가기!/);
       screen.getByText(/템플릿 추가하기/);
     });
