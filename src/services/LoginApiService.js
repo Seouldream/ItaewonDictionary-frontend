@@ -46,6 +46,16 @@ export default class LoginApiService {
       role: data.role,
     };
   }
+
+  async requestKakaoAccessToken({ code }) {
+    const { data } = await this.instance.post('/oauth/kakao', { code });
+
+    return {
+      accessToken: data.accessToken,
+      name: data.name,
+      role: data.role,
+    };
+  }
 }
 
 export const loginApiService = new LoginApiService();

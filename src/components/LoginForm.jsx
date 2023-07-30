@@ -8,8 +8,9 @@ import { useForm } from 'react-hook-form';
 import useUserStore from '../hooks/useUserStore';
 import Button from './common/Button';
 import Input from './common/Input';
+import KakaoLoginButton from './KakaoLogin';
 
-export default function LoginForm({ location }) {
+export default function LoginForm({ location, handleClickKakaoLogin }) {
   const navigate = useNavigate();
 
   const userStore = useUserStore();
@@ -68,17 +69,22 @@ export default function LoginForm({ location }) {
           {userStore.loginFailed && (<p>아이디 혹은 비밀번호가 맞지 않습니다</p>)}
         </Error>
         <Button type="submit">로그인하기</Button>
-        <Link to="/signup">회원가입</Link>
+        <KakaoLoginButton
+          handleClickKakaoLogin={handleClickKakaoLogin}
+        />
       </form>
+      <RegisterLink to="/signup">회원가입</RegisterLink>
     </Container>
   );
 }
 
 const Container = styled.article`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+
   a {
     display: block;
     margin-top: 60px;
@@ -109,4 +115,8 @@ const Error = styled.div`
     font-size: 15px;
     color: ${((props) => props.theme.text.red)};
   }
+`;
+
+const RegisterLink = styled(Link)`
+  margin-top: 2rem !important;
 `;
