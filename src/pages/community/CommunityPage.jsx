@@ -17,7 +17,7 @@ const ButtonBox = styled.div`
 export default function CommunityPage() {
   const accessInformation = JSON.parse(localStorage.getItem('accessInformation'));
 
-  const { accessToken } = accessInformation;
+  const { accessToken } = accessInformation || '';
 
   const navigate = useNavigate();
   const handleClickNavigate = () => {

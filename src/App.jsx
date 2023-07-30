@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { ModalProvider } from 'styled-react-modal';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import GrammarPage from './pages/grammar/GrammarPage';
@@ -28,6 +28,7 @@ import CommunityPage from './pages/community/CommunityPage';
 import ActivityDetailPage from './components/community/ActivityDetailPage';
 import ActivityFormPage from './pages/community/ActivityFormPage';
 import SignupPage from './pages/SignupPage';
+import OAuthPage from './pages/OAuthPage';
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/oauth" element={<OAuthPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login-admin" element={<AdminLoginPage />} />
             <Route path="/grammar" element={<GrammarPage />} />

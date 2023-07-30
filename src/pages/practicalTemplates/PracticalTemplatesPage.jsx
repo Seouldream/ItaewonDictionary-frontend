@@ -39,8 +39,6 @@ export default function PracticalTemplatesPage() {
 
   const [searchParams] = useSearchParams();
 
-  console.log(searchParams);
-
   const page = searchParams.get('page') ?? 1;
 
   useEffect(() => {

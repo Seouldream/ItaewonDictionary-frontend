@@ -55,9 +55,9 @@ export default function ActivityDetailPage() {
 
   const accessInformation = JSON.parse(localStorage.getItem('accessInformation'));
 
-  const { accessToken } = accessInformation;
+  const { accessToken } = accessInformation || '';
 
-  const { name } = accessInformation;
+  const { name } = accessInformation || '';
 
   const handleClickCreateComment = async () => {
     if (!accessToken) {

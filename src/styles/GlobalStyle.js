@@ -4,6 +4,13 @@ const GlobalStyle = createGlobalStyle`
 * {
     box-sizing: border-box;
 }
+
+html {
+    margin: 0;
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
 body {
     color: ${((props) => props.theme.text.primary)};
     background-color: ${((props) => props.theme.colors.background)};

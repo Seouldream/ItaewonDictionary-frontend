@@ -64,7 +64,7 @@ const HomeDoughnut = styled.img`
 export default function Header() {
   const navigate = useNavigate();
 
-  const [accessInfo, setAccessInfo] = useLocalStorage('accessInformation');
+  const [accessInfo, setAccessInfo] = useLocalStorage('accessInformation', { accessToken: '', name: '', role: '' });
 
   const { accessToken } = accessInfo;
 
