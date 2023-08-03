@@ -25,17 +25,14 @@ export default class SpeakPracticesApiService {
     return practice;
   }
 
-  async createPractice(practiceForm, formData) {
+  async createPractice(practiceForm, formData, accessToken) {
     const url = `${baseUrl}/practice/new`;
-
-    const {
-      title, situation, englishScript, koreanScript,
-    } = practiceForm;
 
     formData.append('practice', JSON.stringify(practiceForm));
 
     const { data } = await axios.post(url, formData, {
       headers: {
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'multipart/form-data',
       },
     });

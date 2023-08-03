@@ -4,8 +4,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import GrammarContent from '../../components/Grammar/GrammarContent';
-import GrammarIntroduction from '../../components/Grammar/GrammarIntroduction';
+import GrammarContent from '../../components/grammar/GrammarContent';
+import GrammarIntroduction from '../../components/grammar/GrammarIntroduction';
 import useGrammarAdminFormStore from '../../hooks/useGrammarAdminFormStore';
 import useGrammarStore from '../../hooks/useGrammarStore';
 

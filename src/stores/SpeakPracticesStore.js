@@ -68,8 +68,8 @@ export default class SpeakPracticesStore extends Store {
     this.publish();
   }
 
-  async createPractice() {
-    await speakPracticesApiService.createPractice(this.practiceForm, this.record);
+  async createPractice(accessToken) {
+    await speakPracticesApiService.createPractice(this.practiceForm, this.record, accessToken);
 
     this.publish();
   }

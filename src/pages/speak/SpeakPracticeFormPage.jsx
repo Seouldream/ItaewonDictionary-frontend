@@ -75,6 +75,10 @@ export default function SpeakPracticeFormPage() {
 
   const formData = new FormData();
 
+  const accessInformation = JSON.parse(localStorage.getItem('accessInformation'));
+
+  const { accessToken } = accessInformation;
+
   const { practiceForm } = speakPracticesStore;
 
   const { record } = speakPracticesStore;
@@ -96,7 +100,7 @@ export default function SpeakPracticeFormPage() {
       return;
     }
 
-    await speakPracticesStore.createPractice();
+    await speakPracticesStore.createPractice(accessToken);
     speakPracticesStore.clearPracticeTemplate();
 
     navigate('/speak');
@@ -105,6 +109,10 @@ export default function SpeakPracticeFormPage() {
   const handleClickNavigateToPreviousPage = () => {
     navigate(-1);
   };
+
+  if (!accessToken) {
+    navigate('/login');
+  }
 
   return (
     <Wrapper>

@@ -69,9 +69,9 @@ export default function LoginForm({ location, handleClickKakaoLogin }) {
           {userStore.loginFailed && (<p>아이디 혹은 비밀번호가 맞지 않습니다</p>)}
         </Error>
         <Button type="submit">로그인하기</Button>
-        <KakaoLoginButton
+        {/* <KakaoLoginButton
           handleClickKakaoLogin={handleClickKakaoLogin}
-        />
+        /> */}
       </form>
       <RegisterLink to="/signup">회원가입</RegisterLink>
     </Container>

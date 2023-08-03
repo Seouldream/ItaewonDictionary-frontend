@@ -23,15 +23,9 @@ export default function OAuthPage() {
 
   const code = searchParams.get('code') || '';
 
-  console.log('code', code);
-
   const state = JSON.parse(searchParams.get('state') || '{}');
 
-  console.log('state', state);
-
   const redirect = state?.redirect || '/';
-
-  console.log('redirect', redirect);
 
   useRequestAccessToken({ code, redirect });
 
