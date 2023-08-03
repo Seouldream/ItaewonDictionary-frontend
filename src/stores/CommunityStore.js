@@ -5,6 +5,8 @@ export default class CommunityStore extends Store {
   constructor() {
     super();
 
+    this.loading = false;
+
     this.activities = [];
 
     this.totalPages = '';
@@ -18,11 +20,15 @@ export default class CommunityStore extends Store {
   }
 
   async fetchActivities(page) {
+    this.loading = true;
+
     const { activities, pages } = await communityApiService.fetchActivities(page);
 
     this.activities = activities;
 
     this.totalPages = pages.totalPages;
+
+    this.loading = false;
 
     this.publish();
   }

@@ -64,16 +64,16 @@ export default function ActivityFormPage() {
 
   const accessInformation = JSON.parse(localStorage.getItem('accessInformation'));
 
-  const accessToken = accessInformation[0];
+  const { accessToken } = accessInformation;
 
-  const handleChangeContent = (event, editor) => {
+  const handleChangeContent = async (event, editor) => {
     const content = editor.getData();
 
-    communityStore.changeContent(content);
+    await communityStore.changeContent(content);
   };
 
-  const handleClickCreateActivity = () => {
-    communityStore.createActivity(accessToken);
+  const handleClickCreateActivity = async () => {
+    await communityStore.createActivity(accessToken);
 
     navigate('/community');
   };
