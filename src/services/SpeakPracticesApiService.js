@@ -30,6 +30,8 @@ export default class SpeakPracticesApiService {
 
     formData.append('practice', JSON.stringify(practiceForm));
 
+    console.log(accessToken);
+
     const { data } = await axios.post(url, formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,

@@ -16,7 +16,6 @@ export default class SpeakPracticesStore extends Store {
       situation: '',
       englishScript: '',
       koreanScript: '',
-      userNickname: '',
     };
 
     this.record = '';
